@@ -1,0 +1,53 @@
+﻿extend ..\layout
+
+block custom_head
+	title TOP
+	link(rel='stylesheet', type='text/css', href='/css/pages/index.css')
+
+block custom_header
+	include _header
+	#main_titile
+		picture
+			source(media="(max-width: 768px)" srcset="/ja/image/accelerate_mobile.png")
+			img(src='/ja/image/accelerate.png')
+
+block content
+	#infomation
+		#prerelease
+			h2 抢鲜
+			table
+				tr
+					td 2018/3/9
+					td 我增加了新的公寓到物件情报
+				tr
+					td 2018/2/23
+					td 我增加了新的公寓到物件情报
+				tr
+					td 2018/2/2
+					td 我增加了新的公寓到物件情报
+				tr
+					td 2018/1/15
+					td 我增加了新的公寓到物件情报
+				tr
+					td 2017/12/7
+					td 我增加了新的公寓到物件情报
+				tr
+					td 2017/11/28
+					td 我增加了新的公寓到物件情报
+				tr
+					td 2017/10/17
+					td 我增加了新的公寓到物件情报
+				tr
+					td 2017/09/01
+					td 我增加了新的公寓到物件情报
+				tr
+					td 2017/06/15
+					td 我们在鶯谷駅和南千住折扣房费
+				tr
+					td 2016/12/12
+					td 我们做了这个页面
+	#sidebar
+		+facebook-plugin()
+
+block custom_footer
+	include _footer

@@ -1,0 +1,32 @@
+extend ..\..\layout
+
+block custom_head
+	- if(post != undefined)
+		title= post.title
+	link(rel='stylesheet', type='text/css', href='/lightbox/css/lightbox.min.css')
+	script(src='/lightbox/js/lightbox.min.js')
+
+block custom_header
+	include ..\_header
+	#main_titile
+		- if(post != undefined)
+			h1= post.title
+	nav#bread
+		ul
+			li
+				a(href='/') TOP
+			li
+				a(href='/en/rental') 专栏
+
+block content
+	#infomation
+		block column_article
+		#thumbnail
+			block thumbnail
+		include ..\_contact
+
+	#sidebar
+
+block custom_footer
+	include ..\_footer
+

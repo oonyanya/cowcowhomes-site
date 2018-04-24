@@ -1,0 +1,48 @@
+﻿extend /layout
+
+block custom_head
+	title 民泊・シェアハウス
+	meta(name='robots' content='noindex')
+
+block custom_header
+	include ..\_header
+	#main_titile
+		h1 民泊・シェアハウス
+	nav#bread
+		ul
+			li
+				a(href='/') TOP
+			li
+				a(href='/ja/accommodation') 民泊・シェアハウス
+
+block content
+	#infomation
+		p 当社では東京都内を中心に短期滞在可能な物件を取り揃えています
+		h2 民泊
+		if site.posts != undefined && site.posts.ja != undefined && site.posts.ja.accommodations != undefined
+			each category in Object.keys(site.posts.ja.accommodations)
+				h3= data.resources.area.ja[category] + 'エリア'
+				each post in site.posts.ja.accommodations[category]
+					ul.sidenav
+						if post.hide == undefined || post.hide != true
+							li
+								a(href= post._url)= post.title
+		else
+			p 現在宿泊可能な所はありません
+
+		h2 シェアハウス
+		if site.posts != undefined && site.posts.ja != undefined && site.posts.ja.sharehouses != undefined
+			each category in Object.keys(site.posts.ja.sharehouses)
+				h3= data.resources.area.ja[category] + 'エリア'
+				each post in site.posts.ja.sharehouses[category]
+					ul.sidenav
+						if post.hide == undefined || post.hide != true
+							li
+								a(href= post._url)= post.title
+		else
+			p 今現在、空いているシェアハウスはありません
+
+	#sidebar
+
+block custom_footer
+	include ..\_footer

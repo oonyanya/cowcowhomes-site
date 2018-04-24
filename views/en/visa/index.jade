@@ -1,0 +1,37 @@
+﻿extend /layout
+
+block custom_head
+	title IMMIGRATION
+
+block custom_header
+	include ..\_header
+	#main_titile
+		h1 IMMIGRATION
+	nav#bread
+		ul
+			li
+				a(href='/') TOP
+			li
+				a IMMIGRATION
+
+block content
+	#infomation
+		p We are doing below
+		ul
+			li Application visa
+			li Application Status of Residence
+			li Application Permanent Residence, Naturalization, Settlement
+		h2 Pros of using this office
+		ul
+			li We make application form instead of you
+			li We can communicate with Chinese or English.  If you can speak or write by Japanese little, it is no problem.
+			li We can go to Immigration office
+		h2 Price
+		p Proce is 35,000 yen and miscellaneous cost. It is free to consult until 30 mins(after 30 mins 5,000 yen) at the office about immigration after make a reservation.
+		include ..\_contact
+		+contact_from("Seeking advise for applying visa", "")
+
+	#sidebar
+
+block custom_footer
+	include ..\_footer

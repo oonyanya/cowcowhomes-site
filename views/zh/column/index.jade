@@ -1,0 +1,26 @@
+﻿extend /layout
+
+block custom_head
+	title 专栏
+
+block custom_header
+	include ..\_header
+	#main_titile
+		h1 专栏
+	nav#bread
+		ul
+			li
+				a(href='/') TOP
+			li
+				a 专栏
+
+block content
+	#infomation
+		block column_article
+		#thumbnail
+			block thumbnail
+		include ..\_contact
+	#sidebar
+
+block custom_footer
+	include ..\_footer

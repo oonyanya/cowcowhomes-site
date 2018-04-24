@@ -1,0 +1,36 @@
+doctype html
+html
+
+	head
+		meta(charset='utf-8')
+		script(type='text/javascript'). 
+			(function(){
+				Object.defineProperty(document,"referrer",{value:document.referrer });
+				var lang = browserLanguage();
+				if(lang == undefined || lang == "ja")
+					location.href = location.protocol + "//" + location.host + "/ja" + location.search;
+				else
+					location.href = location.protocol + "//" + location.host + "/" + lang  + location.search;
+
+				function browserLanguage() {
+				  try {
+				    return (navigator.browserLanguage || navigator.language || navigator.userLanguage).substr(0,2)
+				  }
+				  catch(e) {
+				    return undefined;
+				  }
+				}
+			})();
+	body
+		div
+			script(src='//accaii.com/cowcowhomes/script.js', async='')
+			noscript
+				img(src='//accaii.com/cowcowhomes/script?guid=on')
+			p This site is COWCOWHOMES.CO.LTD. Which language do you prefer?
+			ul#lang_switch
+				li
+					a(href='/ja') 日本語
+				li
+					a(href='/zh') 中文
+				li
+					a(href='/en') English

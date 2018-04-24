@@ -1,0 +1,37 @@
+extend ..\..\layout
+
+block custom_head
+	- if(post != undefined)
+		title= post.title
+	link(rel='stylesheet', type='text/css', href='/lightbox/css/lightbox.min.css')
+	script(src='/lightbox/js/lightbox.min.js')
+
+block custom_header
+	include ..\_header
+	#main_titile
+		- if(post != undefined)
+			h1= post.title
+	nav#bread
+		ul
+			li
+				a(href='/') TOP
+			li
+				a(href='/ja/rental') 賃貸アパート
+			li
+				- if(post != undefined)
+					a= data.resources.area.ja[ post._categories[post._categories.length - 1] ] + 'エリア'
+
+block content
+	#infomation
+		block rental_article
+		#thumbnail
+			block thumbnail
+		include ..\_contact
+		- if(post != undefined)
+			+contact_from(post.title, "〇月〇日に見たいのですが、空いてますか")
+
+	#sidebar
+
+block custom_footer
+	include ..\_footer
+

@@ -1,0 +1,24 @@
+{
+  "name": "cowcowhomes-site",
+  "description": "about cowcowhomes",
+  "dependencies": {
+    "autoprefixer-stylus": "0.9.x",
+    "axis": "0.6.x",
+    "coffee-script": "1.x",
+    "css-pipeline": "0.3.x",
+    "dynamic-content": "^0.3.0",
+    "jade": "1.x",
+    "js-pipeline": "0.2.x",
+    "jstransformer-marked": "1.x",
+    "marked": "0.3.x",
+    "roots-yaml": "0.0.4",
+    "rupture": "0.6.x",
+    "stylus": "0.54.x",
+    "prompt": "1.0.0",
+    "async": "0.2.10",
+    "fs-extra": "1.0.0",
+    "replaceall": "0.1.6",
+    "format-currency": "1.0.0",
+    "gm": "1.21.x"
+  }
+}

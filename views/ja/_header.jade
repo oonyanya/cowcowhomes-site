@@ -1,0 +1,18 @@
+﻿#company_infomation
+  #logo
+    = data.resources.company_info.ja.name
+  .address
+    p.telphone= data.resources.company_info.ja.tel
+    p= data.resources.company_info.ja.mail
+    p= data.resources.company_info.ja.opentime
+nav.global_nav
+  .top_menu_label MENU
+  ul.top_menu
+    li
+      a(href='/ja') TOP
+    li.dropdown-parent
+      a(href='/ja/rental') 賃貸アパート
+    li
+      a(href='/ja/accommodation') 民泊・シェアハウス
+    li
+      a(href='/ja/about') 会社情報

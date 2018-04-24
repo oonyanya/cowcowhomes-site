@@ -1,0 +1,60 @@
+﻿extend /layout
+
+block custom_head
+	title 賃貸アパート
+	meta(name='robots' content='noindex')
+
+block custom_header
+	include ..\_header
+	#main_titile
+		h1 賃貸アパート
+	nav#bread
+		ul
+			li
+				a(href='/') TOP
+			li
+				a(href='/ja/rental') 賃貸アパート
+
+block content
+	#infomation
+		p 当社では東京都内を中心に礼金０・保証人不要の賃貸アパートをご用意しています。以下のリストにない場合、#[a(href='https://tokyo.craigslist.jp/search/apa?query=cowcowhomes+LTD+private+room&availabilityMode=0&sort=date') craglistの単身者向け物件]か#[a(href='https://tokyo.craigslist.jp/search/apa?query=cowcowhomes+LTD+familly+room&availabilityMode=0&sort=date') 家族向け物件]にも掲載されているかもしれません。もし、広めの単身者向けアパートをお探しの場合は家族向けの奴もご確認ください。家族向けの部屋は単身向けよりも広い傾向にあります。
+		if site.posts != undefined && site.posts.ja != undefined && site.posts.ja.rentals != undefined
+			each category in Object.keys(site.posts.ja.rentals)
+				h3= data.resources.area.ja[category] + 'エリア'
+				each post in site.posts.ja.rentals[category]
+					ul.sidenav
+						if post.hide == undefined || post.hide != true
+							li
+								a(href= post._url)= post.title
+						else
+							li
+								del= post.title
+		else
+			p 現在貸出可能な物件はありません
+		h2 注意事項
+		p しかし、中には礼金や敷金などがかかったり、いくつか気を付けなければいけない点がございます。詳しいことは以下のリストに記載してありますので、ご不明な点がございましたら、以下のリストをご覧ください
+		h3 礼金
+		p ほとんどの物件では礼金を取らない物件が主流となっていますが、新築など条件のいい物件を借りる場合、礼金を払わないといけないことがあります
+		h3 敷金
+		p 物件を借りるときに収める保証金を指します。ほとんどのアパートでは退去時に清掃費用を指しい引いた分を返すことがほとんどですが、たまに家賃の1か月程度を差し引いて、原状回復に充てることもあります
+		h3 仲介手数料
+		p ほとんどの物件では物件を紹介する際の手数料は必要ありませんが、たまに必要なケースもございます
+		h3 保証会社/保証料
+		p 連帯保証人がいらない物件では、借主が支払えなくなった時に備えて保証会社を利用する必要があります。保証料とはその際の収める費用のことを指します
+		h3 鍵交換費
+		p アパートから前借りていた人が退去する際、防犯のためにカギを取り換えることが多いです。関西圏では請求しないことが多いですが、関東圏ではその費用を借主に請求することが多いです
+		h3 清掃費用・害虫駆除費
+		p いくつかのアパートでは退去時もしくは入居時に害虫を駆除するための費用や部屋の汚れを取るための費用を請求することがあります
+		h3 残置物
+		p 以前の借主がおいていったものを指します。これは貸主が持っているものではないので、どう取り扱っていただいても構いません
+		h3 設置物
+		p 残置物とは対照的に貸主が設置しているものを指します。これは借主のものではないので、貸主が持っていくことはできません。万が一、壊した場合、修理代を貸主に払うことになります
+		h3 インターネットフリー
+		p いくつかのアパートではインターネットにつなぐための設備を無料で使うことができます。ただ、この設備はベストエフォートなので、時々遅いと感じることがあるかもしれません。もし、不満がある場合、大家の同意を得れば別のプロバイダーに変えることもできます
+		h3 部屋面積
+		p 大体のアパートの場合、部屋面積と言ったらキッチン・トイレ・風呂を含めた面積のことを指します。ですが、いくつかの部屋（大体の場合、シェアハウス）では別途ルームのみの面積を指します
+
+	#sidebar
+
+block custom_footer
+	include ..\_footer

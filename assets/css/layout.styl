@@ -1,0 +1,67 @@
+.global_nav
+    li
+        a
+            display block
+#lang_switch
+    a
+        display block
+
+@media screen and (min-width: 769px)
+    body
+        margin auto
+        width 95%
+    #company_infomation
+        display flex
+        flex-direction row
+        height 100px
+        div
+            flex 1
+    .top_menu_label
+        display none
+    .global_nav
+        & > ul
+            display flex
+            flex-direction row
+            padding-left 10px
+            padding-right 10px
+            & > li
+                display block
+                flex 1
+                text-align: center
+        li
+            a
+                padding-left 0px
+    .dropdown-parent
+        position relative
+        display block
+    .dropdown-content
+        position absolute
+        li
+            a
+                padding-left 0px
+				display block
+    #bread
+        ul
+            display flex
+            flex-direction row
+    main
+        display flex
+        flex 1
+        min-height 50vh
+    #infomation
+        flex 2
+        & > div
+            margin-top 10px
+    #thumbnail
+        display flex
+        flex-wrap wrap
+    #sidebar
+        flex 1
+    #topics
+        display flex
+        flex-wrap wrap
+        & > div
+            width calc(33.3% - 10px)
+    #lang_switch
+        display flex
+        flex-direction row

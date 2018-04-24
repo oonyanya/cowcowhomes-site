@@ -1,0 +1,61 @@
+﻿extend /layout
+
+block custom_head
+	meta(description='rental apartment list in japan')
+	title RENTAL
+
+block custom_header
+	include ..\_header
+	#main_titile
+		h1 RENTAL APARTMENT
+	nav#bread
+		ul
+			li
+				a(href='/') TOP
+			li
+				a(href='/en/rental') RENTAL APARTMENT
+
+block content
+	#infomation
+		p We have your ideal apartment which NOT REQUIRE KEY MONEY, GURANTOR for familly and single to retal in Japan in Tokyo.  If there aren't, you can check #[a(href='https://tokyo.craigslist.jp/search/apa?query=cowcowhomes+LTD+private+room&availabilityMode=0&sort=date') craglist for private room] or #[a(href='https://tokyo.craigslist.jp/search/apa?query=cowcowhomes+LTD+familly+room&availabilityMode=0&sort=date') familly room] and then you might got it. if you need large private, please check familly room. Almost familly is more lager than private room.
+		if site.posts != undefined && site.posts.en != undefined && site.posts.en.rentals != undefined
+			each category in Object.keys(site.posts.en.rentals)
+				h3= category + ' area'
+				each post in site.posts.en.rentals[category]
+					ul.sidenav
+						if post.hide == undefined || post.hide != true
+							li
+								a(href= post._url)= post.title
+						else
+							li
+								del= post.title
+		else
+			p We don't have available rental house
+		h2 important things
+		p however, some apartment require key money and some fee and Japanese gurantor. There are also imporant things before you rent. Please read or check fee and things before rent.
+		h3 thirdparty-gurantor(gurantee fee)
+		p All japanse apartment required gurantor when you cann't pay rental fee but nowadays almost partment doesn't requires it instead of contracting thirdparty-gurantor company.
+		h3 key money
+		p Almost apartment doesn't need key money but some apartment need it becuase it is usally more better condtion than others.
+		h3 deposit money
+		p When you want to stay a apartment, you have to pay money for gurantee. Almost apartment's owner deduct cleaning fee from the money and return to you when you leave. but some owner dedut room fee(one month or two month) from the money and fix a apartment sometimes.
+		h3 agent fee
+		p We are introduceing some apartment for you. if you rent it from ours, you might pay agent fee.(Despit of it, almost apartment doesn't require agent fee frequently)
+		h3 key change fee
+		p All apartment's administrator usually change room key for securty. In west japan, you don't need to pay key change fee but in east japan owner ask you to pay it. You live in east japan so you have to pay it usually.
+		h3 cleaning or harmful extermination fee
+		p When you leave or rent some aparments,you have to pay some money to keep clean or exterminate harmful insect.
+		h3 a object which someone left
+		p Nobody own it because someone doesn't need it no longer. You can use it free. Of cource,you can sell it.
+		h3 a object which aparment's owner own
+		p Aparment's owner own it. You can use it but can't sell it. If you break it, you have to pay fee to fix it.
+		h3 Internet Free
+		p There are some wired or wireless network to use the Internet free. The network is best effort so you might feel slow sometimes(usually 18 pm to 0 am). If you complain about it, you might not contract another network --- with owner's consent
+		h3 Room Square
+		p In Japan, almost apartment's room square include kitchen and toilet and bath room but some apartment(typeically share house)'s room square is only bed room
+
+	#sidebar
+
+block custom_footer
+	include ..\_footer
+

@@ -1,0 +1,41 @@
+﻿include resources.jade
+
+doctype html
+html
+
+	head
+		meta(charset='utf-8')
+		meta(name='viewport', content='width=device-width, initial-scale=1.0, minimum-scale=1.0')
+		meta(name='description', content='description of your site')
+		meta(name='author', content= "author of the site")
+		script(src='http://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.1.1.min.js')
+		script(src='/js/hover.js')
+		block custom_head
+		!= css('/')
+		#fb-root
+		script.
+			(function(d, s, id) {
+			var js, fjs = d.getElementsByTagName(s)[0];
+			if (d.getElementById(id)) return;
+			js = d.createElement(s); js.id = id;
+			js.src = "//connect.facebook.net/ja_JP/sdk.js#xfbml=1&version=v2.10&appId=1757936567837729";
+			fjs.parentNode.insertBefore(js, fjs);
+			}(document, 'script', 'facebook-jssdk'));
+	body
+		div.
+			<script src="//accaii.com/cowcowhomes/script.js" async></script><noscript><img src="//accaii.com/cowcowhomes/script?guid=on"></noscript>
+		header
+			block custom_header
+		main
+			block content
+		footer
+			ul#lang_switch
+				li
+					a(href='/ja') 日本語
+				li
+					a(href='/zh') 中文
+				li
+					a(href='/en') English
+			block custom_footer
+
+		//!= js()

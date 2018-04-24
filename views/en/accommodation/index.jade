@@ -1,0 +1,48 @@
+﻿extend /layout
+
+block custom_head
+	title ACCOMMODATION & SHAREHOUSE
+	meta(name='robots' content='noindex')
+
+block custom_header
+	include ..\_header
+	#main_titile
+		h1 ACCOMMODATION & SHAREHOUSE
+	nav#bread
+		ul
+			li
+				a(href='/') TOP
+			li
+				a(href='/en/accommodation') ACCOMMODATION & SHAREHOUSE
+
+block content
+	#infomation
+		p We have some accomodations in Tokyo
+		h2 ACCOMMODATION
+		if site.posts != undefined && site.posts.en != undefined && site.posts.en.accommodations != undefined
+			each category in Object.keys(site.posts.en.accommodations)
+				h3= category + 'area'
+				each post in site.posts.en.accommodations[category]
+					ul.sidenav
+						if post.hide == undefined || post.hide != true
+							li
+								a(href= post._url)= post.title
+		else
+			p Sorry. We don't have available accomodations
+
+		h2 SHARE HOUSE
+		if site.posts != undefined && site.posts.en != undefined && site.posts.en.sharehouses != undefined
+			each category in Object.keys(site.posts.en.sharehouses)
+				h3= category + 'area'
+				each post in site.posts.en.sharehouses[category]
+					ul.sidenav
+						if post.hide == undefined || post.hide != true
+							li
+								a(href= post._url)= post.title
+		else
+			p Sorry. We don't have available share houses
+
+	#sidebar
+
+block custom_footer
+	include ..\_footer
