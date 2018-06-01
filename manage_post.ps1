@@ -104,7 +104,7 @@ function ImportImageToPost($type,$area,$id,$lang)
     {
         #$public_folder_image_pathの末尾に/がついてる
         $post += "`ta(href=`"/{0}{1}`" data-lightbox=`"room-images`")" -f $public_folder_image_path,$resize_image_file.original
-        $post += "`t`timg(src=`"/{0}{1}`")" -f $public_folder_image_path,$resize_image_file.thumb
+        $post += "`t`timg(src=`"/{0}/{1}`")" -f $public_folder_image_path,$resize_image_file.thumb
     }
     $Utf8NoBomEncoding = New-Object System.Text.UTF8Encoding $False
     [System.IO.File]::WriteAllLines($output_file_path, $post, $Utf8NoBomEncoding)
