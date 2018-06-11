@@ -97,25 +97,7 @@ infomation IDˆÈ‰º‚É‚Í‚É‚Í‹LŽ–‚â•\‚È‚Çˆê”ÔŒ©‚¹‚½‚¢‚È‚à‚Ì‚ð‘‚¢‚ÄAsidebar ID‚É‚Í‹
 Œ»’iŠK‚Å‚ÍƒtƒŠ[‚Ì‘fÞ‚ðŽg—p‚µ‚Ä‚¢‚é‚Ì‚ÅPowered byˆÈ~‚Ííœ‚µ‚È‚¢‚Å‚­‚¾‚³‚¢
 ‚±‚ê‚ª‚È‚¢‚ÆƒfƒUƒCƒ“‚ÌŽg—p—¿‚È‚Ç‚ð¿‹‚³‚ê‚Ä‚µ‚Ü‚¢‚Ü‚·
 
-## dataˆÈ‰º‚Ìƒtƒ@ƒCƒ‹‚É‚Â‚¢‚Ä
+## resources.jade‚É‚Â‚¢‚Ä
 
-‚±‚ÌƒtƒHƒ‹ƒ_[‚É‚ ‚éyaml‚Å‚ÍŒ¾Œê‚²‚Æ‚É•¶Žš—ñ‚ð’è‹`‚µ‚Ü‚·
-’è‹`‚³‚ê‚½•¶Žš—ñ‚ÉƒAƒNƒZƒX‚½‚¢ê‡‚Ídata.test‚Æ‚¢‚¤Š´‚¶‚ÅƒAƒNƒZƒX‚µ‚Ü‚·
-
-	—áj
-	company_info:
-	  en:
-	    name: "COWCOWHOMES.CO.LTD"
-
-	company_info.en.name‚ÅƒAƒNƒZƒX‚·‚é‚Æ‰ïŽÐ–¼‚ªŽæ“¾‚Å‚«‚é
-
-V‚µ‚¢’è‹`‚ðì‚éê‡A—á‚Ì‚æ‚¤‚É‚µ‚Ä‚­‚¾‚³‚¢B—á‚¦‚Î“ú–{Œê‚ÅH—tŒ´ƒGƒŠƒA‚ð•\‚µ‚½‚¢ê‡A
-
-	—áj
-	area:
-		ja:
-			akihabara: H—tŒ´
-
-‚Æ‚µ‚Ü‚·
-
-•ÒW‹y‚Ñ•Û‘¶‚·‚é‚Æ‚«‚É‚ÍUTF-8(BOM‚È‚µ)‚Å•Û‘¶‚µ‚Ä‚­‚¾‚³‚¢B‚³‚à‚È‚¢‚Æ³‚µ‚­‰ðÍ‚Å‚«‚Ü‚¹‚ñB  
+‰ïŽÐ–¼‚âZŠ‚È‚Ç‹¤’Ê‚µ‚ÄŽg—p‚·‚é‚à‚Ì‚ª‚¨‚¢‚Ä‚ ‚è‚Ü‚·
+  
