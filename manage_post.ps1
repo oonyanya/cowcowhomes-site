@@ -30,10 +30,11 @@ function Generate-Thumbnail($image_files,$output_folder_image_path)
     {
         if($image_file -match "(png|jpg|gif)$")
         {
-            Copy-Item -Path $image_file.FullName -Destination $output_folder_image_path
+            $output_image_file_path = "{0}/{1}" -f $output_folder_image_path,$image_file
+            &"C:\Program Files\GraphicsMagick-1.3.25-Q16\gm.exe" convert -auto-orient -strip $image_file.FullName $output_image_file_path
             $resized_image_file_name = "thumb_{0}" -f $image_file
             $resized_image_file_path = "{0}/thumb_{1}" -f $output_folder_image_path,$image_file
-            &"C:\Program Files\GraphicsMagick-1.3.25-Q16\gm.exe" convert -resize 256x256 $image_file.FullName $resized_image_file_path
+            &"C:\Program Files\GraphicsMagick-1.3.25-Q16\gm.exe" convert -auto-orient -strip -resize 256x256 $image_file.FullName $resized_image_file_path
             $resized_image_files += @{thumb = $resized_image_file_name; original = $image_file}
         }
     }
