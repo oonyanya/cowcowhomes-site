@@ -64,13 +64,19 @@ function Generate-Post($type,$area,$id,$lang)
 
     $post = Get-Content -Path $template_path -Encoding UTF8
 
+    $temp = "<div id=`thumbnail`">"
     $image_files = Get-ChildItem -Path $import_image_path
     $resized_image_files = Generate-Thumbnail $image_files $output_folder_image_path
     foreach($resize_image_file in $resized_image_files)
     {
-        $post += "`ta(href=`"/{0}/{1}`" data-lightbox=`"room-images`")" -f $public_folder_image_path,$resize_image_file.original
-        $post += "`t`timg(src=`"/{0}/{1}`")" -f $public_folder_image_path,$resize_image_file.thumb
+        $temp += "`t<a href=`"/{0}/{1}`" data-lightbox=`"room-images`">" -f $public_folder_image_path,$resize_image_file.original
+        $temp += "`t`t<img src=`"/{0}/{1}`" />" -f $public_folder_image_path,$resize_image_file.thumb
     }
+    $temp += "`t<!--- image here --->"
+    $temp += "</div>"
+
+    $post = $post.Replace("<!--- image here --->",$temp)
+
     $Utf8NoBomEncoding = New-Object System.Text.UTF8Encoding $False
     [System.IO.File]::WriteAllLines($output_file_path, $post, $Utf8NoBomEncoding)
 
@@ -99,14 +105,18 @@ function ImportImageToPost($type,$area,$id,$lang)
 
     $post = Get-Content -Path $output_file_path -Encoding UTF8
 
+    $temp = "<div id=`thumbnail`">"
     $image_files = Get-ChildItem -Path $import_image_path
     $resized_image_files = Generate-Thumbnail $image_files $output_folder_image_path
     foreach($resize_image_file in $resized_image_files)
     {
-        #$public_folder_image_pathの末尾に/がついてる
-        $post += "`ta(href=`"/{0}{1}`" data-lightbox=`"room-images`")" -f $public_folder_image_path,$resize_image_file.original
-        $post += "`t`timg(src=`"/{0}/{1}`")" -f $public_folder_image_path,$resize_image_file.thumb
+        $temp += "`t<a href=`"/{0}/{1}`" data-lightbox=`"room-images`">" -f $public_folder_image_path,$resize_image_file.original
+        $temp += "`t`t<img src=`"/{0}/{1}`" />" -f $public_folder_image_path,$resize_image_file.thumb
     }
+    $temp += "`t<!--- image here --->"
+    $temp += "</div>"
+
+    $post = $post.Replace("<!--- image here --->",$temp)
     $Utf8NoBomEncoding = New-Object System.Text.UTF8Encoding $False
     [System.IO.File]::WriteAllLines($output_file_path, $post, $Utf8NoBomEncoding)
 
