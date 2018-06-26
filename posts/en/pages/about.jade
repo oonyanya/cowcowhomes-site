@@ -1,0 +1,51 @@
+---
+title: 'ABOUT US'
+date: 16/12/2016
+id: 'about'
+_content: false
+---
+
+extends /en/_single_page_article.jade
+
+block article
+	h2 COMPANY INFOMATION
+	img(src='/img/ceo.jpg')
+	table
+		tr
+			th Company Name
+			td= data.resources.company_info.en.name
+		tr
+			th CEO
+			td Tumura Daisaku
+		tr
+			th Location
+			td Maruyama Building 2 Floor,Arakawa4-12-3,Arakawaku,〒116-0002
+		tr
+			th TEL
+			td= data.resources.company_info.en.tel
+		tr
+			th FAX
+			td 03-6479-0964
+		tr
+			th softbank
+			td 080-3277-1304
+		tr
+			th Mail address
+			td daisaku@cowcowhomes.com
+		tr
+			th real estate business license number
+			td No. 13(1)99902
+		tr
+			th a chain store association
+			td
+				a.detail(href= data.resources.company_info.ja.athome_url) ATHOME
+		tr
+			th Description of business
+			td
+				ul
+					li rental house and apartment
+					li manage house and apartment
+					li everything for estatement
+	h2 How to access
+	iframe(src='https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3238.529904280375!2d139.7763973153737!3d35.73777823447579!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188e70b74dfbe1%3A0x335cce49f8ec4039!2z44CSMTE2LTAwMDIg5p2x5Lqs6YO96I2S5bed5Yy66I2S5bed77yU5LiB55uu77yR77yS4oiS77yT!5e0!3m2!1sja!2sjp!4v1481000416308', width='600', height='450', frameborder='0', style='border:0', allowfullscreen='')
+	p Go on foot from Keisei Line ShinMikawazima Station. It takes five minitues.
