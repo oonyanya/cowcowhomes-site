@@ -1,4 +1,4 @@
-extend ..\..\layout
+extend /layout
 
 block custom_head
 	- if(post != undefined)
@@ -7,7 +7,7 @@ block custom_head
 	script(src='/lightbox/js/lightbox.min.js')
 
 block custom_header
-	include ..\_header
+	include /ja/_header
 	#main_titile
 		- if(post != undefined)
 			h1= post.title
@@ -16,22 +16,22 @@ block custom_header
 			li
 				a(href='/') TOP
 			li
-				a(href='/en/rental') ACCOMMODATION
+				a(href='/posts/ja/accommodations') 民泊
 			li
 				- if(post != undefined)
-					a= post._categories[post._categories.length - 1] + 'area'
+					a= data.resources.area.ja[ post._categories[post._categories.length - 1] ] + 'エリア'
 
 block content
 	#infomation
 		block accommodation_article
 		#thumbnail
 			block thumbnail
-		include ..\_contact
+		include /ja/_contact
 		- if(post != undefined)
-			+contact_from(post.title, "I want to stay from XXX to YYY with ZZ person.Is available now?")
+			+contact_from(post.title, "〇月〇日から〇月〇日まで〇人で泊まりたいのですが、空いてますか?")
 
 	#sidebar
 
 block custom_footer
-	include ..\_footer
+	include /ja/_footer
 

@@ -7,7 +7,7 @@ block custom_head
 	script(src='/lightbox/js/lightbox.min.js')
 
 block custom_header
-	include ..\_header
+	include /en/_header
 	#main_titile
 		- if(post != undefined)
 			h1= post.title
@@ -16,7 +16,7 @@ block custom_header
 			li
 				a(href='/') TOP
 			li
-				a(href='/en/rental') RENTAL APARTMENT
+				a(href='/posts/en/rentals') RENTAL APARTMENT
 			li
 				- if(post != undefined)
 					a= post._categories[post._categories.length - 1] + ' area'
@@ -26,12 +26,12 @@ block content
 		block rental_article
 		#thumbnail
 			block thumbnail
-		include ..\_contact
+		include /en/_contact
 		- if(post != undefined)
 			+contact_from(post.title, "Is available now?\n")
 
 	#sidebar
 
 block custom_footer
-	include ..\_footer
+	include /en/_footer
 
