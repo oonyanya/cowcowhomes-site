@@ -12,12 +12,7 @@ block custom_header
 		- if(post != undefined)
 			h1= post.title
 	nav#bread
-		ul
-			li
-				a(href='/') TOP
-			li
-				- if(post != undefined)
-					a= post.title
+		+output_bread_list(post, "ja")
 
 block content
 	#infomation

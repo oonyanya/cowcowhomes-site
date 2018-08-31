@@ -20,7 +20,38 @@
 						"mail": "daisaku@cowcowhomes.com"
 					}
 				},
+				"allow_jump_category":{
+					"ja":{
+						"sharehouses": "民泊・シェアハウス",
+						"accommodations": "民泊・シェアハウス",
+						"rentals": "賃貸",
+					},
+					"en":{
+						"sharehouses": "AC&PG",
+						"accommodations": "AC&PG",
+						"rentals": "RENTAL",
+					},
+					"zh":{
+						"sharehouses": "民泊",
+						"accommodations": "民泊",
+						"rentals": "賃貸",
+					},
+				},
 				"area": {
+					"en": {
+						"akihabara": "Akihabara",
+						"ikebukuro": "Ikebukuro",
+						"shinzyuku": "Shinzyuku",
+						"sibuya": "Sibuya",
+						"tokyo": "Tokyo",
+						"ueno": "Ueno",
+						"akahane": "Akahane",
+						"ginza": "Ginza",
+						"oomiya": "Oomiya",
+						"narita": "Narita",
+						"hatiouzi": "Hatiouzi",
+						"yokohama": "Yokohama"
+						},
 					"ja": {
 						"akihabara": "秋葉原",
 						"ikebukuro": "池袋",
@@ -58,3 +89,20 @@ mixin facebook-plugin
 	.fb-page(data-href='https://www.facebook.com/有限会社カウカウホームズ-905600372815879/', data-tabs='timeline', data-small-header='true', data-adapt-container-width='true', data-hide-cover='true', data-show-facepile='false')
 		blockquote.fb-xfbml-parse-ignore(cite='https://www.facebook.com/有限会社カウカウホームズ-905600372815879/')
 			a(href='https://www.facebook.com/有限会社カウカウホームズ-905600372815879/') 有限会社カウカウホームズ
+
+mixin output_bread_list(post, lang)
+	ul
+		- for(var i = 0; i < post._categories.length; i++)
+			- if(i == 0)
+				li
+					a(href='/') TOP
+			- else if(i == 1 || post._categories[i] == "pages")	continue;
+			- else if(post != undefined)
+				- var url = "/" + post._categories.slice(0,i + 1).join('/')
+				- var area_label= data.resources.area[lang][ post._categories[i] ]
+				- var nav_label= data.resources.allow_jump_category[lang][ post._categories[i] ]
+				- if( typeof(nav_label) == "undefined")
+					li= area_label
+				- else
+					li
+						a(href="#{url}")= nav_label
