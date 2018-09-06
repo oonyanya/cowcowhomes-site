@@ -7,7 +7,7 @@ dynamic_content = require 'dynamic-content'
 common = require './common'
 
 module.exports =
-  ignores: ['readme.md', '*.md', '**/layout.jade', '**/_*', '.gitignore', 'ship.*conf', '*.cmd', 'common.coffee', 'rental_articles.jade']
+  ignores: ['readme.md', '*.md', '**/layout.jade', '**/_*', '.gitignore', 'ship.*conf', '*.cmd', 'common.coffee', '*.exe', '*.ps1']
 
   extensions: [
     js_pipeline(files: 'assets/js/*.coffee', out: 'js/build.js', minify: true),
