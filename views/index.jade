@@ -14,6 +14,8 @@ html
 					var lang = browserLanguage();
 					if(lang == undefined)
 						lang = "ja"
+					else if(lang != "ja")
+						lang = "en"
 					return location.protocol + "//" + location.host + "/" + lang  + location.pathname + location.search + location.hash;
 				}
 
