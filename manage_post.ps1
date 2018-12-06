@@ -170,7 +170,7 @@ function RemovePost($type,$area,$id,$lang)
 $command = Read-Host "command(add/import/remove/list)"
 if($command -eq "list")
 {
-    Get-ChildItem .\posts -Recurse -Filter *.jade
+    Get-ChildItem .\posts -Recurse -Filter *.jade -Name
 }else{
     $type = Read-Host "type"
     $area = read-host "area"
