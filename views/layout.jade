@@ -22,9 +22,14 @@ html
 			js.src = "//connect.facebook.net/ja_JP/sdk.js#xfbml=1&version=v2.10&appId=1757936567837729";
 			fjs.parentNode.insertBefore(js, fjs);
 			}(document, 'script', 'facebook-jssdk'));
+		// Global site tag (gtag.js) - Google Analytics
+		script(src='https://www.googletagmanager.com/gtag/js?id=UA-130573235-1', async='')
+		script.
+			window.dataLayer = window.dataLayer || [];
+			function gtag(){dataLayer.push(arguments);}
+			gtag('js', new Date());
+			gtag('config', 'UA-130573235-1');
 	body
-		div.
-			<script src="//accaii.com/cowcowhomes/script.js" async></script><noscript><img src="//accaii.com/cowcowhomes/script?guid=on"></noscript>
 		header
 			block custom_header
 		main
