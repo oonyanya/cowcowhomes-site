@@ -200,3 +200,4 @@ if($command -eq "list")
         }
     }
 }
+Read-Host "hit any key"
