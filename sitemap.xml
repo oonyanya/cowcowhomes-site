@@ -42,11 +42,6 @@
   <changefreq>monthly</changefreq>
 </url>
 <url>
-  <loc>http://www.cowcowhomes.com/ja/about</loc>
-  <priority>0.6</priority>
-  <changefreq>monthly</changefreq>
-</url>
-<url>
   <loc>http://www.cowcowhomes.com/posts/en/rentals</loc>
   <priority>0.6</priority>
   <changefreq>monthly</changefreq>
@@ -55,11 +50,6 @@
   <loc>http://www.cowcowhomes.com/posts/en/pages/about.html</loc>
   <priority>0.6</priority>
   <lastmod>2018-12-03T15:10:54+09:00</lastmod>
-  <changefreq>monthly</changefreq>
-</url>
-<url>
-  <loc>http://www.cowcowhomes.com/en/about</loc>
-  <priority>0.6</priority>
   <changefreq>monthly</changefreq>
 </url>
 <url>
