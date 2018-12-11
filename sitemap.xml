@@ -75,11 +75,6 @@
   <changefreq>monthly</changefreq>
 </url>
 <url>
-  <loc>http://www.cowcowhomes.com/posts/ja/rental</loc>
-  <priority>0.5</priority>
-  <changefreq>monthly</changefreq>
-</url>
-<url>
   <loc>http://www.cowcowhomes.com/posts/ja/rentals/yokohama/namamugi_apartment.html</loc>
   <priority>0.5</priority>
   <lastmod>2018-12-03T15:10:54+09:00</lastmod>
@@ -89,11 +84,6 @@
   <loc>http://www.cowcowhomes.com/posts/ja/rentals/ueno/minamisenzyu1.html</loc>
   <priority>0.5</priority>
   <lastmod>2018-12-03T15:10:54+09:00</lastmod>
-  <changefreq>monthly</changefreq>
-</url>
-<url>
-  <loc>http://www.cowcowhomes.com/posts/en/rental</loc>
-  <priority>0.5</priority>
   <changefreq>monthly</changefreq>
 </url>
 <url>
