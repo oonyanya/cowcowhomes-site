@@ -41,6 +41,24 @@ function Generate-Thumbnail($image_files,$output_folder_image_path)
     return $resized_image_files
 }
 
+function Insert-Image($post,$import_image_path,$image_files,$output_folder_image_path,$resized_image_files,$public_folder_image_path)
+{
+    $temp = ""
+    $image_files = Get-ChildItem -Path $import_image_path
+    $resized_image_files = Generate-Thumbnail $image_files $output_folder_image_path
+    foreach($resize_image_file in $resized_image_files)
+    {
+        $temp += "`t`t`t<a href=`"/{0}/{1}`" data-lightbox=`"room-images`">`n" -f $public_folder_image_path,$resize_image_file.original
+        $temp += "`t`t`t`t<img src=`"/{0}/{1}`" />`n" -f $public_folder_image_path,$resize_image_file.thumb
+        $temp += "`t`t`t</a>`n"
+    }
+    $temp += "`t`t`t<!--- image here --->"
+
+    $post = $post.Replace("`t`t`t<!--- image here --->",$temp)
+
+    return $post
+}
+
 function Generate-Post($type,$area,$id,$lang)
 {
     $template_path = GetTemplatePath $lang $type
@@ -64,18 +82,9 @@ function Generate-Post($type,$area,$id,$lang)
 
     $post = Get-Content -Path $template_path -Encoding UTF8
 
-    $temp = "<div id=`thumbnail`">"
-    $image_files = Get-ChildItem -Path $import_image_path
-    $resized_image_files = Generate-Thumbnail $image_files $output_folder_image_path
-    foreach($resize_image_file in $resized_image_files)
-    {
-        $temp += "`t<a href=`"/{0}/{1}`" data-lightbox=`"room-images`">" -f $public_folder_image_path,$resize_image_file.original
-        $temp += "`t`t<img src=`"/{0}/{1}`" />" -f $public_folder_image_path,$resize_image_file.thumb
-    }
-    $temp += "`t<!--- image here --->"
-    $temp += "</div>"
+    $post = Insert-Image $post $import_image_path $image_files $output_folder_image_path $resized_image_files $public_folder_image_path
 
-    $post = $post.Replace("<!--- image here --->",$temp)
+    $post = $post.Replace("!id!",$id)
 
     $Utf8NoBomEncoding = New-Object System.Text.UTF8Encoding $False
     [System.IO.File]::WriteAllLines($output_file_path, $post, $Utf8NoBomEncoding)
@@ -105,18 +114,8 @@ function ImportImageToPost($type,$area,$id,$lang)
 
     $post = Get-Content -Path $output_file_path -Encoding UTF8
 
-    $temp = "<div id=`thumbnail`">"
-    $image_files = Get-ChildItem -Path $import_image_path
-    $resized_image_files = Generate-Thumbnail $image_files $output_folder_image_path
-    foreach($resize_image_file in $resized_image_files)
-    {
-        $temp += "`t<a href=`"/{0}/{1}`" data-lightbox=`"room-images`">" -f $public_folder_image_path,$resize_image_file.original
-        $temp += "`t`t<img src=`"/{0}/{1}`" />" -f $public_folder_image_path,$resize_image_file.thumb
-    }
-    $temp += "`t<!--- image here --->"
-    $temp += "</div>"
+    $post = Insert-Image $post $import_image_path $image_files $output_folder_image_path $resized_image_files $public_folder_image_path
 
-    $post = $post.Replace("<!--- image here --->",$temp)
     $Utf8NoBomEncoding = New-Object System.Text.UTF8Encoding $False
     [System.IO.File]::WriteAllLines($output_file_path, $post, $Utf8NoBomEncoding)
 
