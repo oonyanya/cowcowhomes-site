@@ -9,19 +9,19 @@
   - js ƒXƒNƒŠƒvƒg
 - data
  - resources.yaml views‚Åg—p‚·‚éƒtƒ@ƒCƒ‹
+- posts
+  - en ‰pŒê”Å‚Ì•¨Œî•ñ‚È‚Ç‚ğŠi”[‚µ‚Ä‚¢‚Ü‚·
+    - pages ’Pˆêƒy[ƒW‚ğŠi”[‚µ‚Ü‚·
+  - ja “ú–{Œê”Å‚Ì•¨Œî•ñ‚È‚Ç‚ğŠi”[‚µ‚Ä‚¢‚Ü‚·
+    - pages ’Pˆêƒy[ƒW‚ğŠi”[‚µ‚Ü‚·
 - views
   - en ‰pŒê”Å‚Ìƒz[ƒ€ƒy[ƒW
+    - _single_page_article.jade ’Pˆêƒy[ƒW‚Ìƒeƒ“ƒvƒŒ[ƒg
   - ja “ú–{Œê”Å‚Ìƒz[ƒ€ƒy[ƒW
+    - _single_page_article.jade ’Pˆêƒy[ƒW‚Ìƒeƒ“ƒvƒŒ[ƒg
   - image ƒTƒCƒg‚²‚Æ‚ÌƒCƒ[ƒW‚ğ•\‚µ‚Ü‚·
   - layout.jade ƒRƒA•”•ª‚Ìƒeƒ“ƒvƒŒ[ƒg
   - index.jade ƒgƒbƒvƒy[ƒW
-
-- ‚»‚ê‚¼‚ê‚ÌŒ¾Œê‚²‚Æ‚ÌƒfƒBƒŒƒNƒgƒŠ
-  - index.jade Œ¾Œê‚²‚Æ‚Ìƒgƒbƒvƒy[ƒW
-  - _header.jade ƒwƒbƒ_[•”•ª
-  - _footer.jade ƒtƒbƒ^[•”•ª
-  - rental‚È‚Ç ƒy[ƒW‚²‚Æ‚ÌƒtƒHƒ‹ƒ_[‚ğ•\‚·
-	- index.jade ƒy[ƒW‚²‚Æ‚Ìƒgƒbƒvƒy[ƒW
 
 ƒy[ƒW‚ğV‚µ‚­ì‚Á‚½ê‡A“K“–‚ÈƒtƒHƒ‹ƒ_[‚ğì‚Á‚ÄA‚±‚Ì’†‚Åƒy[ƒW‚Ì“à—e‚ğ‘‚¢‚Ä‚¢‚«‚Ü‚·
 
@@ -96,6 +96,11 @@ infomation IDˆÈ‰º‚É‚Í‚É‚Í‹L–‚â•\‚È‚Çˆê”ÔŒ©‚¹‚½‚¢‚È‚à‚Ì‚ğ‘‚¢‚ÄAsidebar ID‚É‚Í‹
 ’˜ìŒ ‚âƒTƒCƒgƒ}ƒbƒv‚âƒvƒ‰ƒCƒoƒV[ƒ|ƒŠƒV[‚È‚Ç‚ğ‚±‚±‚É‹Lq‚µ‚Ä‚Ü‚·
 Œ»’iŠK‚Å‚ÍƒtƒŠ[‚Ì‘fŞ‚ğg—p‚µ‚Ä‚¢‚é‚Ì‚ÅPowered byˆÈ~‚Ííœ‚µ‚È‚¢‚Å‚­‚¾‚³‚¢
 ‚±‚ê‚ª‚È‚¢‚ÆƒfƒUƒCƒ“‚Ìg—p—¿‚È‚Ç‚ğ¿‹‚³‚ê‚Ä‚µ‚Ü‚¢‚Ü‚·
+
+## ’Pˆêƒy[ƒW‚Ì‘‚«•û
+
+‘‚«•û‚Íabout.jade‚ğŒ©‚ê‚Î‚í‚©‚é‚Æv‚¢‚Ü‚·
+‚È‚¨AƒŠƒ“ƒN‚ğ’£‚éÛAURL‚Íabout.jade‚È‚ç/posts/ja/pages/about.html‚İ‚½‚¢‚É‘‚«‚Ü‚·
 
 ## resources.jade‚É‚Â‚¢‚Ä
 
