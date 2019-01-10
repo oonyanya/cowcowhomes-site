@@ -113,10 +113,5 @@ mixin output_bread_list(post, lang)
 						a(href="#{url}")= nav_label
 
 mixin rss-feed()
-	//- http://easyfeed.info/customize.html によるとrss-itemsクラスがfeedにつくらしい
-	//-
-	script(language='JavaScript', src='http://easyfeed.info/easyfeed/feed2js.php?src=https%3A%2F%2Ftokyo.craigslist.org%2Fsearch%2Fapa%3FavailabilityMode%3D0%26format%3Drss%26query%3Dcowcowhomes%2520LTD%26sort%3Ddate&num=5&utf=y&html=a', type='text/javascript', charset='UTF-8')
-	.rss-box(align='right')
-	a.rss-item(style='font-size: 60%; color: #A9A9A9;', href='http://easyfeed.info/') 無料RSSツール
-	noscript
-		a(href='http://easyfeed.info/easyfeed/feed2js.php?src=https%3A%2F%2Ftokyo.craigslist.org%2Fsearch%2Fapa%3FavailabilityMode%3D0%26format%3Drss%26query%3Dcowcowhomes%2520LTD%26sort%3Ddate&num=5&utf=y&html=y') View RSS feed
+	script(language='JavaScript', src='/js/rss2html.js')
+	.rss-box
