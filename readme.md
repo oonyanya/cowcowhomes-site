@@ -10,6 +10,7 @@ assets/imgフォルダー以下のファイルはgitでは管理していません。daisaku@cowcowhomes
 
 ## Setup
 
+- xamppをCドライブのルートにインストールする
 - node.js 6.9.2をインストールする
 - GraphicsMagick-1.3.25-Q16-win64-dll.exeを[SourceForge](https://sourceforge.net/projects/graphicsmagick/files/graphicsmagick-binaries/1.3.25/GraphicsMagick-1.3.25-Q16-win64-dll.exe/download)からダウンロードして、インストールする
 - コマンドプロンプトを管理者権限で立ち上げて、npm -i roots -gを実行する
