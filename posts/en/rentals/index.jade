@@ -17,7 +17,7 @@ block custom_header
 
 block content
 	#infomation
-		p We have your ideal apartment which NOT REQUIRE KEY MONEY, GURANTOR for familly and single to retal in Japan in Tokyo.  If there aren't, you can check #[a(href='https://tokyo.craigslist.jp/search/apa?query=cowcowhomes+LTD&availabilityMode=0&sort=date' onclick="ga('send','event','about-broker-rent','click','outside')") rental room] and then you got it.
+		p We have your ideal apartment which NOT REQUIRE KEY MONEY, GURANTOR for familly and single to retal in Japan in Tokyo.  If there aren't, you can check #[a(href='https://tokyo.craigslist.jp/search/apa?query=cowcowhomes+LTD&availabilityMode=0&sort=date' onclick="gtag('event','click', {'event_category': 'outside','event_label': 'craiglist'})") rental room] and then you got it.
 		if site.posts != undefined && site.posts.en != undefined && site.posts.en.rentals != undefined
 			each category in Object.keys(site.posts.en.rentals)
 				h3= category + ' area'
