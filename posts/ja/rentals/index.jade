@@ -16,7 +16,7 @@ block custom_header
 
 block content
 	#infomation
-		p 当社では東京都内を中心に礼金０・保証人不要の賃貸アパートをご用意しています。以下のリストにない場合、#[a(href='https://tokyo.craigslist.jp/search/apa?query=cowcowhomes+LTD+private+room&availabilityMode=0&sort=date') craglistの単身者向け物件]か#[a(href='https://tokyo.craigslist.jp/search/apa?query=cowcowhomes+LTD+familly+room&availabilityMode=0&sort=date') 家族向け物件]にも掲載されているかもしれません。もし、広めの単身者向けアパートをお探しの場合は家族向けの奴もご確認ください。家族向けの部屋は単身向けよりも広い傾向にあります。
+		p 当社では東京都内を中心に礼金０・保証人不要の賃貸アパートをご用意しています。以下のリストにない場合、#[a(href='https://tokyo.craigslist.jp/search/apa?query=cowcowhomes+LTD&availabilityMode=0&sort=date' onclick="ga('send','event','about-broker-rent','click','outside')" ) 物件リスト]にも掲載しています。
 		if site.posts != undefined && site.posts.ja != undefined && site.posts.ja.rentals != undefined
 			each category in Object.keys(site.posts.ja.rentals)
 				h3= data.resources.area.ja[category] + 'エリア'
