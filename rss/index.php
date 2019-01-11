@@ -1,5 +1,5 @@
 <?php
-$cacheExpire = "1 day";
+$cacheExpire = "6 hour";
 $cacheFile = "cache.dat";
 $url = "https://tokyo.craigslist.org/search/apa?availabilityMode=0&format=rss&query=cowcowhomes%20LTD&sort=date";
 
