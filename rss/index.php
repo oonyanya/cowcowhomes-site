@@ -1,14 +1,24 @@
 <?php
-
+$cacheExpire = "1 day";
+$cacheFile = "cache.dat";
 $url = "https://tokyo.craigslist.org/search/apa?availabilityMode=0&format=rss&query=cowcowhomes%20LTD&sort=date";
 
-$ch = curl_init(); // 初期化
-curl_setopt( $ch, CURLOPT_URL, $url ); // URLの設定
-curl_setopt( $ch, CURLOPT_RETURNTRANSFER, true ); // 出力内容を受け取る設定
-$result = curl_exec( $ch ); // データの取得
-curl_close($ch); // cURLのクローズ
+$diff_from_file = time() - @filemtime($cacheFile);
+$diff_from_current = is_string($cacheExpire) ? strtotime($cacheExpire) - time() : $cacheExpire;
+if($diff_from_file <= $diff_from_current)
+{
+    $strJson = @file_get_contents($cacheFile);
+} else {
+    $ch = curl_init(); // 初期化
+    curl_setopt( $ch, CURLOPT_URL, $url ); // URLの設定
+    curl_setopt( $ch, CURLOPT_RETURNTRANSFER, true ); // 出力内容を受け取る設定
+    $result = curl_exec( $ch ); // データの取得
+    curl_close($ch); // cURLのクローズ
 
-$strJson = xml_to_json($result);
+    $strJson = xml_to_json($result);
+
+    file_put_contents($cacheFile, $strJson);
+}
 
 echo $strJson;
 
