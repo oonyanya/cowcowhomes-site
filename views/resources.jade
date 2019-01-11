@@ -115,3 +115,7 @@ mixin output_bread_list(post, lang)
 mixin rss-feed()
 	script(language='JavaScript', src='/js/rss2html.js')
 	.rss-box
+		ul.rss-items
+	template#rss-template
+		li.rss-item
+			a(href='' onclick="gtag('event','view_item', {'item_id': 'craglist_item'})") todo

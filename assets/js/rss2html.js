@@ -4,23 +4,25 @@ window.addEventListener( 'load', function(){
 		url: '/rss/index.php',
 		dataType: 'json',
 		success: function(json){
-			console.log(json["item"]);
 			var rss_items = json["item"];
 
 			var len = rss_items.length;
 			if(len > 10)
 				len = 10;
 
-			$(".rss-box").append("<ul class='rss-items'></ul>");
+			var root = document.getElementsByClassName('rss-items')[0];
 
-			var new_ul = $(".rss-box .rss-items");
+			var template = document.getElementById('rss-template');
 
 			for(var i=0; i < len; i++){
-				var html = "<li class='rss-item'><a href='%url%'>%title%</a></li>";
-				var str = html.replace("%url%",rss_items[i]["link"]);
-				var str = str.replace("%title%",rss_items[i]["title"]);
-				console.log(str);
-				new_ul.append(str);
+				//複製してliタグを得る
+				var new_li = document.importNode(template.content, true).firstElementChild;
+				var new_a = new_li.firstElementChild;
+
+				new_a.setAttribute("href", rss_items[i]["link"]);
+				new_a.innerHTML = rss_items[i]["title"];
+
+				root.appendChild(new_li);
 			}
 		}
 	});
