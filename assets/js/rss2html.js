@@ -22,6 +22,14 @@ window.addEventListener( 'load', function(){
 				new_a.setAttribute("href", rss_items[i]["link"]);
 				new_a.innerHTML = rss_items[i]["title"];
 
+				var m = rss_items[i]["title"].match(/\((.+)\)/);
+				if(m)
+					var view_item_text = m[1].trim();
+				else
+					var view_item_text = "craiglist_item";
+
+				new_a.setAttribute("onclick" , "gtag('event','view_item', {'item_id': '%text%'})".replace("%text%",view_item_text) );
+
 				root.appendChild(new_li);
 			}
 		}
