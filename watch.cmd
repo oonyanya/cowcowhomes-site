@@ -11,5 +11,5 @@ popd
 
 xcopy public %PUB_DIRECTORY% /E /I /Y
 
-echo please run brower(address localhost)
+start http://localhost
 pause
