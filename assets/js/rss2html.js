@@ -28,7 +28,10 @@ window.addEventListener( 'load', function(){
 				else
 					var view_item_text = "craiglist_item";
 
-				new_a.setAttribute("onclick" , "gtag('event','view_item', {'item_id': '%text%'})".replace("%text%",view_item_text) );
+				var gtag_text = "gtag('event','view_item', {'id': '%id%', 'name': '%text%'})";
+				gtag_text = gtag_text.replace("%text%",view_item_text);
+				gtag_text = gtag_text.replace("%id%", Math.floor(Math.random() * 32767));
+				new_a.setAttribute("onclick" , gtag_text );
 
 				root.appendChild(new_li);
 			}
