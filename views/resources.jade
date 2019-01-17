@@ -113,7 +113,7 @@ mixin output_bread_list(post, lang)
 						a(href="#{url}")= nav_label
 
 mixin rss-feed()
-	script(language='JavaScript', src='/js/rss2html.js')
+	script(language='JavaScript', src='/js/rss2html.js',defer='')
 	.rss-box
 		ul.rss-items
 	template#rss-template
