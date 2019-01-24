@@ -35,6 +35,10 @@ window.addEventListener( 'load', function(){
 
 				root.appendChild(new_li);
 			}
+
+			var rssbox = document.getElementsByClassName('summary')[0];
+			rssbox.setAttribute("href", json["channel"]["link"]);
+			rssbox.innerHTML = json["channel"]["title"];
 		}
 	});
 },false);

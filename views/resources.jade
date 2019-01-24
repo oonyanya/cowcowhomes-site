@@ -115,6 +115,7 @@ mixin output_bread_list(post, lang)
 mixin rss-feed()
 	script(language='JavaScript', src='/js/rss2html.js',defer='')
 	.rss-box
+			a.summary(href='')
 		ul.rss-items
 	template#rss-template
 		li.rss-item
