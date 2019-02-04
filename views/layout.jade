@@ -15,14 +15,14 @@ html
 		!= css('/')
 		// Global site tag (gtag.js) - Google Analytics
 		script(src='https://www.googletagmanager.com/gtag/js?id=UA-130573235-1', async='')
-		script.
+		script(async='').
 			window.dataLayer = window.dataLayer || [];
 			function gtag(){dataLayer.push(arguments);}
 			gtag('js', new Date());
 			gtag('config', 'UA-130573235-1');
 	body
 		#fb-root
-		script.
+		script(async='').
 			(function(d, s, id) {
 			var js, fjs = d.getElementsByTagName(s)[0];
 			if (d.getElementById(id)) return;
