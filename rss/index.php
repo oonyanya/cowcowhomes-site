@@ -1,7 +1,7 @@
 <?php
 $cacheExpire = "6 hour";
 $cacheFile = "cache.dat";
-$url = "https://tokyo.craigslist.org/search/apa?availabilityMode=0&format=rss&query=cowcowhomes%20LTD&sort=date";
+$url = $_GET["rss_url"];
 
 $diff_from_file = time() - @filemtime($cacheFile);
 $diff_from_current = is_string($cacheExpire) ? strtotime($cacheExpire) - time() : $cacheExpire;

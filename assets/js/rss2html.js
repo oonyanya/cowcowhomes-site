@@ -1,9 +1,12 @@
 window.addEventListener( 'load', function(){
 	$.ajax({
 		type: 'GET',
-		url: '/rss/index.php',
+		url: '/rss/index.php?rss_url=https%3A%2F%2Ftokyo.craigslist.org%2Fsearch%2Fapa%3FavailabilityMode%3D0%26format%3Drss%26query%3Dcowcowhomes%2520LTD%26sort%3Ddate',
 		dataType: 'json',
 		success: function(json){
+			if(json.length == 0)
+				return;
+
 			var rss_items = json["item"];
 
 			var len = rss_items.length;
