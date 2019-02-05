@@ -90,7 +90,16 @@
 -
 
 mixin facebook-plugin
-	.empty
+	#fb-root
+	script(async='').
+		(function(d, s, id) {
+		var js, fjs = d.getElementsByTagName(s)[0];
+		if (d.getElementById(id)) return;
+		js = d.createElement(s); js.id = id;
+		js.async = true;
+		js.src = "//connect.facebook.net/ja_JP/sdk.js#xfbml=1&version=v2.10&appId=1757936567837729";
+		fjs.parentNode.insertBefore(js, fjs);
+		}(document, 'script', 'facebook-jssdk'));
 	.fb-page(data-href='https://www.facebook.com/有限会社カウカウホームズ-905600372815879/', data-tabs='timeline', data-small-header='true', data-adapt-container-width='true', data-hide-cover='true', data-show-facepile='false')
 		blockquote.fb-xfbml-parse-ignore(cite='https://www.facebook.com/有限会社カウカウホームズ-905600372815879/')
 			a(href='https://www.facebook.com/有限会社カウカウホームズ-905600372815879/') 有限会社カウカウホームズ
