@@ -1,7 +1,12 @@
 <?php
 $cacheExpire = "6 hour";
-$cacheFile = "cache.dat";
-$url = $_GET["rss_url"];
+
+if(isset($_GET["rss_url"]))
+    $url = $_GET["rss_url"];
+else
+    exit("");
+
+$cacheFile = sprintf("%s.dat",hasedStr($url));
 
 $diff_from_file = time() - @filemtime($cacheFile);
 $diff_from_current = is_string($cacheExpire) ? strtotime($cacheExpire) - time() : $cacheExpire;
@@ -13,7 +18,11 @@ if($diff_from_file <= $diff_from_current)
     curl_setopt( $ch, CURLOPT_URL, $url ); // URLの設定
     curl_setopt( $ch, CURLOPT_RETURNTRANSFER, true ); // 出力内容を受け取る設定
     $result = curl_exec( $ch ); // データの取得
+    $errno = curl_errno($ch);
     curl_close($ch); // cURLのクローズ
+
+    if($errno != CURLE_OK)
+        exit("");
 
     $strJson = xml_to_json($result);
 
@@ -21,6 +30,11 @@ if($diff_from_file <= $diff_from_current)
 }
 
 echo $strJson;
+
+function hasedStr($s)
+{
+    return hash("sha256", $s, false);
+}
 
 //**********************************
 // XML ⇒ JSONに変換する関数
