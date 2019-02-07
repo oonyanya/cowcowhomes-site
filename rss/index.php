@@ -14,6 +14,18 @@ if($diff_from_file <= $diff_from_current)
 {
     $strJson = @file_get_contents($cacheFile);
 } else {
+    $result = get_xml($url);
+    if(result == null)
+        exit("");
+    $strJson = xml_to_json($result);
+
+    file_put_contents($cacheFile, $strJson);
+}
+
+echo $strJson;
+
+function get_xml($url)
+{
     $ch = curl_init(); // 初期化
     curl_setopt( $ch, CURLOPT_URL, $url ); // URLの設定
     curl_setopt( $ch, CURLOPT_RETURNTRANSFER, true ); // 出力内容を受け取る設定
@@ -22,14 +34,10 @@ if($diff_from_file <= $diff_from_current)
     curl_close($ch); // cURLのクローズ
 
     if($errno != CURLE_OK)
-        exit("");
+        return null;
 
-    $strJson = xml_to_json($result);
-
-    file_put_contents($cacheFile, $strJson);
+    return $result;
 }
-
-echo $strJson;
 
 function hasedStr($s)
 {
