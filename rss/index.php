@@ -1,4 +1,12 @@
 <?php
+// ■使い方
+//
+//  index.php?rss_url=[URL] みたいにして使います。[URL]はPHPのurlencode()などでエンコードした奴を渡す必要があります。
+//
+//  注意点
+//
+//  名前空間の:は_に置き換えられます
+//
 $cacheExpire = "6 hour";
 
 if(isset($_GET["rss_url"]))
