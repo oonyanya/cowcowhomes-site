@@ -7,30 +7,55 @@
 //
 //  名前空間の:は_に置き換えられます
 //
-$cacheExpire = "6 hour";
-
 if(isset($_GET["rss_url"]))
     $url = $_GET["rss_url"];
 else
     exit("");
 
-$cacheFile = sprintf("%s.dat",hasedStr($url));
+$cache = new Cache($url);
 
-$diff_from_file = time() - @filemtime($cacheFile);
-$diff_from_current = is_string($cacheExpire) ? strtotime($cacheExpire) - time() : $cacheExpire;
-if($diff_from_file <= $diff_from_current)
+if($cache->is_expire())
 {
-    $strJson = @file_get_contents($cacheFile);
+    $strJson = $cache->get();
 } else {
     $result = get_xml($url);
-    if(result == null)
+    if($result == null)
         exit("");
     $strJson = xml_to_json($result);
 
-    file_put_contents($cacheFile, $strJson);
+    $cache->set($strJson);
 }
 
 echo $strJson;
+
+class Cache
+{
+  protected $cache_expire;
+  protected $cache_file;
+
+  public function __construct($url)
+  {
+    $this->cache_file = sprintf("%s.dat",hasedStr($url));
+    $this->cache_expire = "6 hour";
+  }
+
+  public function is_expire()
+  {
+    $diff_from_file = time() - @filemtime($this->cache_file);
+    $diff_from_current = is_string($this->cache_expire) ? strtotime($this->cache_expire) - time() : $this->cache_expire;
+    return $diff_from_file <= $diff_from_current;
+  }
+
+  public function set($content)
+  {
+    file_put_contents($this->cache_file, $content);
+  }
+
+  public function get()
+  {
+    return @file_get_contents($this->cache_file);
+  }
+}
 
 function get_xml($url)
 {
