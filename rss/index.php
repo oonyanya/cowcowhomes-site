@@ -23,7 +23,7 @@ class Cache
   public function __construct($url)
   {
     $this->cache_file = sprintf("%s.dat",$this->hasedStr($url));
-    $this->cache_expire = "6 hour";
+    $this->cache_expire = "1 hour";
   }
 
   public function is_expire()
