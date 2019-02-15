@@ -38,14 +38,11 @@ class Cache
     return $diff_from_file <= $diff_from_current;
   }
 
-  public function set($content,$expire_hour)
+  public function set($content,$expire)
   {
     file_put_contents($this->cache_file, $content);
-    if(!empty($expire_hour))
-    {
-      $expire = sprintf("%d hour",$expire_hour);
+    if(!empty($expire))
       file_put_contents($this->cache_meta, $expire);
-    }
   }
 
   public function get()
@@ -87,19 +84,25 @@ class RssReader
 
   private function calc_expire_hour($freq,$period)
   {
-    $update_span = 24;
     switch($period){
       case "hourly":
-        $update_span = 1; //1時間未満だとサーバーが落ちるかもしれない
+        $update_span = new DateInterval("P60M"); //1時間未満だとサーバーが落ちるかもしれない
         break;
       case "daily":
-        $update_span = 24 / $freq;
+        $update_span = new DateInterval("P1D");
         break;
       case "weekly":
-        $update_span = 24 / $freq;
+        $update_span = new DateInterval("P7D");
         break;
+      case "monthly":
+        $update_span = new DateInterval("P1M");
+      case "yearly":
+        $update_span = new DateInterval("P1Y");
     }
-    return $update_span;
+    $date = new DateTime("now");
+    $expire_date = (new DateTime("now"))->add($update_span);
+    $span_seconds = ($expire_date->getTimeStamp() - $date->getTimestamp()) / $freq;
+    return $date->add(new DateInterval("PT".$span_seconds."S"))->format(DateTime::RFC3339);
   }
 
   private function get_xml($url)
