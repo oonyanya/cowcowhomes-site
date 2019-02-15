@@ -28,11 +28,13 @@ class Cache
     if(file_exists($this->cache_meta))
       $this->cache_expire = @file_get_contents($this->cache_meta);
     else
-      $this->cache_expire = "24 hour";
+      $this->cache_expire = null;
   }
 
   public function is_not_expire()
   {
+    if($this->cache_expire == null)
+      return false;
     $current_time = new DateTime("now");
     $expire = new DateTime($this->cache_expire);
     return $current_time <= $expire;
@@ -97,8 +99,13 @@ class RssReader
         break;
       case "monthly":
         $update_span = new DateInterval("P1M");
+        break;
       case "yearly":
         $update_span = new DateInterval("P1Y");
+        break;
+      default:
+        $update_span = new DateInterval("P1D");
+        $freq = 1;
     }
     $date = new DateTime("now");
     $expire_date = (new DateTime("now"))->add($update_span);
