@@ -102,7 +102,7 @@ class RssReader
     }
     $date = new DateTime("now");
     $expire_date = (new DateTime("now"))->add($update_span);
-    $span_seconds = ($expire_date->getTimeStamp() - $date->getTimestamp()) / 3600 / $freq;
+    $span_seconds = ($expire_date->getTimeStamp() - $date->getTimestamp()) / $freq;
     return $date->add(new DateInterval("PT".$span_seconds."S"))->format(DateTime::RFC3339);
   }
 
