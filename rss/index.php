@@ -86,7 +86,7 @@ class RssReader
   {
     switch($period){
       case "hourly":
-        $update_span = new DateInterval("P60M"); //1時間未満だとサーバーが落ちるかもしれない
+        $update_span = new DateInterval("PT1H"); //1時間未満だとサーバーが落ちるかもしれない
         $freq = 1;
         break;
       case "daily":
