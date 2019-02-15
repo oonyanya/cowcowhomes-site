@@ -19,11 +19,16 @@ class Cache
 {
   protected $cache_expire;
   protected $cache_file;
+  protected $cache_meta;
 
   public function __construct($url)
   {
     $this->cache_file = sprintf("%s.dat",$this->hasedStr($url));
-    $this->cache_expire = "1 hour";
+    $this->cache_meta = sprintf("%s.meta",$this->hasedStr($url));
+    if(file_exists($this->cache_meta))
+      $this->cache_expire = @file_get_contents($this->cache_meta);
+    else
+      $this->cache_expire = "24 hour";
   }
 
   public function is_expire()
@@ -33,9 +38,14 @@ class Cache
     return $diff_from_file <= $diff_from_current;
   }
 
-  public function set($content)
+  public function set($content,$expire_hour)
   {
     file_put_contents($this->cache_file, $content);
+    if(!empty($expire_hour))
+    {
+      $expire = sprintf("%d hour",$expire_hour);
+      file_put_contents($this->cache_meta, $expire);
+    }
   }
 
   public function get()
@@ -61,13 +71,35 @@ class RssReader
     } else {
       $result = $this->get_xml($url);
       if($result == null)
-          exit("");
-      $strJson = $this->xml_to_json($result);
+          return "";
 
-      $cache->set($strJson);
+      $xml = $this->parse_xmlstr($result);
+      $strJson = $this->xml_to_json($xml);
+      $update_span = $this->calc_expire_hour(
+        intval($xml->channel->syn_updateFrequency),$xml->channel->syn_updatePeriod
+      );
+
+      $cache->set($strJson,$update_span);
     }
 
     return $strJson;
+  }
+
+  private function calc_expire_hour($freq,$period)
+  {
+    $update_span = 24;
+    switch($period){
+      case "hourly":
+        $update_span = 1; //1時間未満だとサーバーが落ちるかもしれない
+        break;
+      case "daily":
+        $update_span = 24 / $freq;
+        break;
+      case "weekly":
+        $update_span = 24 / $freq;
+        break;
+    }
+    return $update_span;
   }
 
   private function get_xml($url)
@@ -90,18 +122,24 @@ class RssReader
   //**********************************
   private function xml_to_json($xml)
   {
-     // コロンをアンダーバーに（名前空間対策）
-     $xml = preg_replace("/<([^>]+?):([^>]+?)>/", "<$1_$2>", $xml);
-     // プロトコルのは元に戻す
-     $xml = preg_replace("/_\/\//", "://", $xml);
-     // XML文字列をオブジェクトに変換（CDATAも対象とする）
-     $objXml = simplexml_load_string($xml, NULL, LIBXML_NOCDATA);
-     // 属性を展開する
-     $this->xml_expand_attributes($objXml);
      // JSON形式の文字列に変換
-     $json = json_encode($objXml, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
+     $json = json_encode($xml, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
      // "\/" ⇒ "/" に置換
      return preg_replace('/\\\\\//', '/', $json);
+  }
+
+  private function parse_xmlstr($xml)
+  {
+    // コロンをアンダーバーに（名前空間対策）
+    $xml = preg_replace("/<([^>]+?):([^>]+?)>/", "<$1_$2>", $xml);
+    // プロトコルのは元に戻す
+    $xml = preg_replace("/_\/\//", "://", $xml);
+    // XML文字列をオブジェクトに変換（CDATAも対象とする）
+    $objXml = simplexml_load_string($xml, NULL, LIBXML_NOCDATA);
+    // 属性を展開する
+    $this->xml_expand_attributes($objXml);
+
+    return $objXml;
   }
 
   //**********************************
