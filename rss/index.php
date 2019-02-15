@@ -31,11 +31,11 @@ class Cache
       $this->cache_expire = "24 hour";
   }
 
-  public function is_expire()
+  public function is_not_expire()
   {
-    $diff_from_file = time() - @filemtime($this->cache_file);
-    $diff_from_current = is_string($this->cache_expire) ? strtotime($this->cache_expire) - time() : $this->cache_expire;
-    return $diff_from_file <= $diff_from_current;
+    $current_time = new DateTime("now");
+    $expire = new DateTime($this->cache_expire);
+    return $current_time <= $expire;
   }
 
   public function set($content,$expire)
@@ -62,7 +62,7 @@ class RssReader
   {
     $cache = new Cache($url);
 
-    if($cache->is_expire())
+    if($cache->is_not_expire())
     {
       $strJson = $cache->get();
     } else {
