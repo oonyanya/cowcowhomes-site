@@ -11,19 +11,25 @@ if(isset($_GET["rss_url"]))
   $url = $_GET["rss_url"];
 else
   exit("");
-
+$supportsGzip = strpos($_SERVER['HTTP_ACCEPT_ENCODING'], 'gzip') !== false;
 $reader = new RssReader();
-echo $reader->get($url);
+if($supportsGzip)
+  echo header('Content-Encoding: gzip');
+echo $reader->get($url,$supportsGzip);
 
 class Cache
 {
   protected $cache_expire;
   protected $cache_file;
+  protected $compressed_cache_file;
   protected $cache_meta;
+  protected $allow_compress;
 
-  public function __construct($url)
+  public function __construct($url,$allow_compress)
   {
+    $this->allow_compress = $allow_compress;
     $this->cache_file = sprintf("%s.dat",$this->hasedStr($url));
+    $this->compressed_cache_file = sprintf("%s.gz",$this->hasedStr($url));
     $this->cache_meta = sprintf("%s.meta",$this->hasedStr($url));
     if(file_exists($this->cache_meta))
       $this->cache_expire = @file_get_contents($this->cache_meta);
@@ -43,13 +49,17 @@ class Cache
   public function set($content,$expire)
   {
     file_put_contents($this->cache_file, $content);
+    file_put_contents($this->compressed_cache_file, gzencode($content));
     if(!empty($expire))
       file_put_contents($this->cache_meta, $expire);
   }
 
   public function get()
   {
-    return @file_get_contents($this->cache_file);
+    if($this->allow_compress)
+      return @file_get_contents($this->compressed_cache_file);
+    else
+      return @file_get_contents($this->cache_file);
   }
 
   private function hasedStr($s)
@@ -60,9 +70,9 @@ class Cache
 
 class RssReader
 {
-  public function get($url)
+  public function get($url,$get_compress)
   {
-    $cache = new Cache($url);
+    $cache = new Cache($url,$get_compress);
 
     if($cache->is_not_expire())
     {
@@ -79,6 +89,7 @@ class RssReader
       );
 
       $cache->set($strJson,$update_span);
+      $strJson = $cache->get(); //キャッシュに格納した奴を返さないといけない
     }
 
     return $strJson;
