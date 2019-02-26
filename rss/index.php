@@ -13,13 +13,38 @@ else
   exit("");
 $supportsGzip = strpos($_SERVER['HTTP_ACCEPT_ENCODING'], 'gzip') !== false;
 $reader = new RssReader();
+if(isset($_SERVER['HTTP_IF_NONE_MATCH']))
+  $feed = $reader->getif($url,$supportsGzip,$_SERVER['HTTP_IF_NONE_MATCH']);
+else
+  $feed = $reader->get($url,$supportsGzip);
+
+header("Etag: " . $feed->etag);
+
+if($feed->json == null)
+{
+  header('HTTP', true, 304);
+  header('Content-Length: 0');
+  exit("");
+}
+
 if($supportsGzip)
   echo header('Content-Encoding: gzip');
-echo $reader->get($url,$supportsGzip);
+
+echo $feed->json;
+
+class CacheMeta
+{
+  public $expire;
+  public $etag;
+  public function __construct($expire,$etag)
+  {
+    $this->expire = $expire;
+    $this->etag = $etag;
+  }
+}
 
 class Cache
 {
-  protected $cache_expire;
   protected $cache_file;
   protected $compressed_cache_file;
   protected $cache_meta;
@@ -31,18 +56,15 @@ class Cache
     $this->cache_file = sprintf("%s.dat",$this->hasedStr($url));
     $this->compressed_cache_file = sprintf("%s.gz",$this->hasedStr($url));
     $this->cache_meta = sprintf("%s.meta",$this->hasedStr($url));
-    if(file_exists($this->cache_meta))
-      $this->cache_expire = @file_get_contents($this->cache_meta);
-    else
-      $this->cache_expire = null;
   }
 
   public function is_not_expire()
   {
-    if($this->cache_expire == null)
+    $expire_str = $this->get_expire();
+    if($expire_str == "")
       return false;
     $current_time = new DateTime("now");
-    $expire = new DateTime($this->cache_expire);
+    $expire = new DateTime();
     return $current_time <= $expire;
   }
 
@@ -51,7 +73,11 @@ class Cache
     file_put_contents($this->cache_file, $content);
     file_put_contents($this->compressed_cache_file, gzencode($content));
     if(!empty($expire))
-      file_put_contents($this->cache_meta, $expire);
+    {
+      $etag = $this->hasedStr($content);
+      $meta = new CacheMeta($expire,$etag);
+      file_put_contents($this->cache_meta, serialize($meta));
+    }
   }
 
   public function get()
@@ -62,14 +88,50 @@ class Cache
       return @file_get_contents($this->cache_file);
   }
 
+  public function get_etag()
+  {
+    if(!file_exists($this->cache_meta))
+      return "";
+    $meta = unserialize(@file_get_contents($this->cache_meta));
+    return $meta->etag;
+  }
+
+  public function get_expire()
+  {
+    if(!file_exists($this->cache_meta))
+      return "";
+    $meta = unserialize(@file_get_contents($this->cache_meta));
+    return $meta->expire;
+  }
+
   private function hasedStr($s)
   {
      return hash("sha256", $s, false);
   }
 }
 
+class RssFeed
+{
+  public $json;
+  public $etag;
+  public function __construct($j,$e)
+  {
+    $this->json = $j;
+    $this->etag = $e;
+  }
+}
+
 class RssReader
 {
+  public function getif($url,$get_compress,$non_match)
+  {
+    $cache = new Cache($url,$get_compress);
+    if($cache->get_etag() == $non_match)
+      return new RssFeed(null,$cache->get_etag());
+    else
+      return $this->get($url,$get_compress);
+  }
+
   public function get($url,$get_compress)
   {
     $cache = new Cache($url,$get_compress);
@@ -92,7 +154,7 @@ class RssReader
       $strJson = $cache->get(); //キャッシュに格納した奴を返さないといけない
     }
 
-    return $strJson;
+    return new RssFeed($strJson,$cache->get_etag());
   }
 
   private function calc_expire_hour($freq,$period)
@@ -121,7 +183,7 @@ class RssReader
     $date = new DateTime("now");
     $expire_date = (new DateTime("now"))->add($update_span);
     $span_seconds = ($expire_date->getTimeStamp() - $date->getTimestamp()) / $freq;
-    return $date->add(new DateInterval("PT".$span_seconds."S"))->format(DateTime::RFC3339);
+    return $date->add(new DateInterval("PT".$span_seconds."S"))->format(DateTime::RFC822);
   }
 
   private function get_xml($url)
