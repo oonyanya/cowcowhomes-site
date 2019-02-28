@@ -1,4 +1,4 @@
-function addRssItem(json)
+function addRssItem(json,rssbox)
 {
 	if(json.length == 0)
 		return;
@@ -9,9 +9,9 @@ function addRssItem(json)
 	if(len > 10)
 		len = 10;
 
-	var root = document.getElementsByClassName('rss-items')[0];
+	var root = rssbox.getElementsByClassName('rss-items')[0];
 
-	var template = document.getElementById('rss-template');
+	var template = root.getElementsByTagName('template')[0];
 
 	for(var i=0; i < len; i++){
 		//複製してliタグを得る
@@ -35,7 +35,7 @@ function addRssItem(json)
 		root.appendChild(new_li);
 	}
 
-	var summary = document.getElementsByClassName('summary')[0];
+	var summary = rssbox.getElementsByClassName('summary')[0];
 	summary.setAttribute("href", json["channel"]["link"]);
 	summary.innerHTML = json["channel"]["title"];
 }
@@ -44,12 +44,15 @@ window.addEventListener( 'load', function(){
 	var rssboxs = document.getElementsByClassName('rss-box');
 	for(var i = 0; i < rssboxs.length; i++)
 	{
-		var rss_url = rssboxs[i].getAttribute("data-rss-url");
+		var rssbox = rssboxs[i];
+		var rss_url = rssbox.getAttribute("data-rss-url");
 		$.ajax({
 			type: 'GET',
 			url: "/rss/index.php?rss_url=" + rss_url,
 			dataType: 'json',
-			success: addRssItem
+			success: function(json){
+					addRssItem(json,rssbox);
+				}
 		});
 	}
 },false);
