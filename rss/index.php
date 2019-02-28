@@ -22,8 +22,7 @@ header("Etag: " . $feed->etag);
 
 if($feed->json == null)
 {
-  header('HTTP', true, 304);
-  header('Content-Length: 0');
+  header('HTTP/1.1 304 Not Modified');
   exit("");
 }
 
@@ -76,7 +75,7 @@ class Cache
     {
       $etag = $this->hasedStr($content);
       $meta = new CacheMeta($expire,$etag);
-      file_put_contents($this->cache_meta, serialize($meta));
+      file_put_contents($this->cache_meta, json_encode($meta));
     }
   }
 
@@ -92,7 +91,7 @@ class Cache
   {
     if(!file_exists($this->cache_meta))
       return "";
-    $meta = unserialize(@file_get_contents($this->cache_meta));
+    $meta = json_decode(@file_get_contents($this->cache_meta));
     return $meta->etag;
   }
 
@@ -100,7 +99,7 @@ class Cache
   {
     if(!file_exists($this->cache_meta))
       return "";
-    $meta = unserialize(@file_get_contents($this->cache_meta));
+    $meta = json_decode(@file_get_contents($this->cache_meta));
     return $meta->expire;
   }
 
