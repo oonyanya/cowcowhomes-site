@@ -13,18 +13,7 @@ else
   exit("");
 $supportsGzip = strpos($_SERVER['HTTP_ACCEPT_ENCODING'], 'gzip') !== false;
 $reader = new RssReader();
-if(isset($_SERVER['HTTP_IF_NONE_MATCH']))
-  $feed = $reader->getif($url,$supportsGzip,$_SERVER['HTTP_IF_NONE_MATCH']);
-else
-  $feed = $reader->get($url,$supportsGzip);
-
-header("Etag: " . $feed->etag);
-
-if($feed->json == null)
-{
-  header('HTTP/1.1 304 Not Modified');
-  exit("");
-}
+$feed = $reader->get($url,$supportsGzip);
 
 if($supportsGzip)
   echo header('Content-Encoding: gzip');
