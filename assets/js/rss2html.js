@@ -44,15 +44,18 @@ window.addEventListener( 'load', function(){
 	var rssboxs = document.getElementsByClassName('rss-box');
 	for(var i = 0; i < rssboxs.length; i++)
 	{
-		var rssbox = rssboxs[i];
-		var rss_url = rssbox.getAttribute("data-rss-url");
-		$.ajax({
-			type: 'GET',
-			url: "/rss/index.php?rss_url=" + rss_url,
-			dataType: 'json',
-			success: function(json){
-					addRssItem(json,rssbox);
-				}
-		});
+		//無名関数を使わないとajaxが意図したとおりに実行されない
+		(function(i){
+			var rssbox = rssboxs[i];
+			var rss_url = rssbox.getAttribute("data-rss-url");
+			$.ajax({
+				type: 'GET',
+				url: "/rss/index.php?rss_url=" + rss_url,
+				dataType: 'json',
+				success: function(json){
+						addRssItem(json,rssbox);
+					}
+			});
+		})(i);
 	}
 },false);
