@@ -11,6 +11,10 @@ function addRssItem(json,rssbox)
 		rss_items = json["channel"]["item"];
 	}
 
+	//rss_itemが一つしか存在しない場合、配列で取得できない
+	if(!Array.isArray(rss_items))
+		rss_items = [rss_items]
+
 	var len = rss_items.length;
 	if(len > 10)
 		len = 10;
@@ -27,23 +31,19 @@ function addRssItem(json,rssbox)
 		new_a.setAttribute("href", rss_items[i]["link"]);
 		new_a.innerHTML = rss_items[i]["title"];
 
-		var m = rss_items[i]["title"].match(/\((.+)\)/);
-		if(m)
-			var view_item_text = m[1].trim();
-		else
-			var view_item_text = "craiglist_item";
-
-		var gtag_text = "gtag('event','view_item', {'id': '%id%', 'name': '%text%'})";
-		gtag_text = gtag_text.replace("%text%",view_item_text);
-		gtag_text = gtag_text.replace("%id%", Math.floor(Math.random() * 32767));
+		var gtag_text = "gtag('event','view_item', {})";
 		new_a.setAttribute("onclick" , gtag_text );
 
 		root.appendChild(new_li);
 	}
 
-	var summary = rssbox.getElementsByClassName('summary')[0];
-	summary.setAttribute("href", json["channel"]["link"]);
-	summary.innerHTML = json["channel"]["title"];
+	var summary_tag = rssbox.getElementsByClassName('summary');
+	if(summary_tag.length == 1)
+	{
+		var summary = summary_tag[0];
+		summary.setAttribute("href", json["channel"]["link"]);
+		summary.innerHTML = json["channel"]["title"];
+	}
 }
 
 window.addEventListener( 'load', function(){
