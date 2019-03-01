@@ -3,7 +3,13 @@ function addRssItem(json,rssbox)
 	if(json.length == 0)
 		return;
 
-	var rss_items = json["item"];
+	var rss_items;
+	if(typeof(json["@attributes"]) == "undefined")	//rss 1.0か
+	{
+		rss_items = json["item"];
+	}else{
+		rss_items = json["channel"]["item"];
+	}
 
 	var len = rss_items.length;
 	if(len > 10)
