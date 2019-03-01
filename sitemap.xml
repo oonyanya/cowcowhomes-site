@@ -3,90 +3,55 @@
 
 <!--  created with free sitemap generation system www.sitemapxml.jp  --> 
 <url>
-  <loc>http://www.cowcowhomes.com/</loc>
+  <loc>http://cowcowhomes.com/</loc>
   <priority>1.0</priority>
-  <lastmod>2018-12-03T15:10:55+09:00</lastmod>
-  <changefreq>monthly</changefreq>
+  <lastmod>2019-03-01T16:52:37+09:00</lastmod>
 </url>
 <url>
-  <loc>http://www.cowcowhomes.com/ja</loc>
+  <loc>http://cowcowhomes.com/ja</loc>
   <priority>0.8</priority>
-  <changefreq>monthly</changefreq>
 </url>
 <url>
-  <loc>http://www.cowcowhomes.com/en</loc>
+  <loc>http://cowcowhomes.com/en</loc>
   <priority>0.8</priority>
-  <changefreq>monthly</changefreq>
 </url>
 <url>
-  <loc>http://www.cowcowhomes.com/ja/</loc>
+  <loc>http://cowcowhomes.com/ja/</loc>
   <priority>0.7</priority>
-  <lastmod>2018-12-03T15:10:55+09:00</lastmod>
-  <changefreq>monthly</changefreq>
+  <lastmod>2019-03-01T16:52:37+09:00</lastmod>
 </url>
 <url>
-  <loc>http://www.cowcowhomes.com/en/</loc>
+  <loc>http://cowcowhomes.com/en/</loc>
   <priority>0.7</priority>
-  <lastmod>2018-12-03T15:10:55+09:00</lastmod>
-  <changefreq>monthly</changefreq>
+  <lastmod>2019-03-01T16:52:37+09:00</lastmod>
 </url>
 <url>
-  <loc>http://www.cowcowhomes.com/posts/ja/rentals</loc>
+  <loc>http://cowcowhomes.com/posts/ja/rentals</loc>
   <priority>0.6</priority>
-  <changefreq>monthly</changefreq>
 </url>
 <url>
-  <loc>http://www.cowcowhomes.com/posts/ja/pages/about.html</loc>
+  <loc>http://cowcowhomes.com/posts/ja/pages/about.html</loc>
   <priority>0.6</priority>
-  <lastmod>2018-12-03T15:10:54+09:00</lastmod>
-  <changefreq>monthly</changefreq>
+  <lastmod>2019-03-01T16:52:37+09:00</lastmod>
 </url>
 <url>
-  <loc>http://www.cowcowhomes.com/posts/en/rentals</loc>
+  <loc>http://cowcowhomes.com/posts/en/rentals</loc>
   <priority>0.6</priority>
-  <changefreq>monthly</changefreq>
 </url>
 <url>
-  <loc>http://www.cowcowhomes.com/posts/en/pages/about.html</loc>
+  <loc>http://cowcowhomes.com/posts/en/pages/about.html</loc>
   <priority>0.6</priority>
-  <lastmod>2018-12-03T15:10:54+09:00</lastmod>
-  <changefreq>monthly</changefreq>
+  <lastmod>2019-03-01T16:52:37+09:00</lastmod>
 </url>
 <url>
-  <loc>http://www.cowcowhomes.com/posts/ja/rentals/</loc>
+  <loc>http://cowcowhomes.com/posts/ja/rentals/</loc>
   <priority>0.5</priority>
-  <lastmod>2018-12-03T15:10:55+09:00</lastmod>
-  <changefreq>monthly</changefreq>
+  <lastmod>2019-03-01T16:52:37+09:00</lastmod>
 </url>
 <url>
-  <loc>http://www.cowcowhomes.com/posts/en/rentals/</loc>
+  <loc>http://cowcowhomes.com/posts/en/rentals/</loc>
   <priority>0.5</priority>
-  <lastmod>2018-12-03T15:10:55+09:00</lastmod>
-  <changefreq>monthly</changefreq>
-</url>
-<url>
-  <loc>http://www.cowcowhomes.com/posts/ja/rentals/yokohama/namamugi_apartment.html</loc>
-  <priority>0.5</priority>
-  <lastmod>2018-12-03T15:10:54+09:00</lastmod>
-  <changefreq>monthly</changefreq>
-</url>
-<url>
-  <loc>http://www.cowcowhomes.com/posts/ja/rentals/ueno/minamisenzyu1.html</loc>
-  <priority>0.5</priority>
-  <lastmod>2018-12-03T15:10:54+09:00</lastmod>
-  <changefreq>monthly</changefreq>
-</url>
-<url>
-  <loc>http://www.cowcowhomes.com/posts/en/rentals/yokohama/namamugi_apartment.html</loc>
-  <priority>0.5</priority>
-  <lastmod>2018-12-03T15:10:54+09:00</lastmod>
-  <changefreq>monthly</changefreq>
-</url>
-<url>
-  <loc>http://www.cowcowhomes.com/posts/en/rentals/ueno/minamisenzyu1.html</loc>
-  <priority>0.5</priority>
-  <lastmod>2018-12-03T15:10:54+09:00</lastmod>
-  <changefreq>monthly</changefreq>
+  <lastmod>2019-03-01T16:52:37+09:00</lastmod>
 </url>
 
 </urlset>
