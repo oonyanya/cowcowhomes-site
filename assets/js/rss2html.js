@@ -44,6 +44,9 @@ function addRssItem(json,rssbox)
 		summary.setAttribute("href", json["channel"]["link"]);
 		summary.innerHTML = json["channel"]["title"];
 	}
+
+	var progress = rssbox.getElementsByTagName('progress')[0];
+	progress.style.display = "none";
 }
 
 window.addEventListener( 'load', function(){

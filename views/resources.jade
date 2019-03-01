@@ -123,7 +123,15 @@ mixin output_bread_list(post, lang)
 
 mixin rss-feed()
 	script(language='JavaScript', src='/js/rss2html.js',defer='')
+	.rss-box(data-rss-url='https%3A%2F%2Fcowcowhomes.blogspot.com%2Frss.xml')
+		progress(max='100')
+		a.summary(href='')
+		ul.rss-items
+			template
+				li.rss-item
+					a(href='' onclick="") todo
 	.rss-box(data-rss-url='https%3A%2F%2Ftokyo.craigslist.org%2Fsearch%2Fhhh%3FavailabilityMode%3D0%26format%3Drss%26query%3Dcowcowhomes%2BLTD%26sort%3Ddate%26lang%3Den%26cc%3Dus')
+		progress(max='100')
 		a.summary(href='')
 		ul.rss-items
 			template

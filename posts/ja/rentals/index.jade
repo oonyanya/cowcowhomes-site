@@ -16,22 +16,8 @@ block custom_header
 
 block content
 	#infomation
-		p 当社では東京都内を中心に礼金０・保証人不要の賃貸アパートをご用意しています。以下のリストにない場合、#[a(href='https://tokyo.craigslist.org/search/apa?query=cowcowhomes+LTD&availabilityMode=0&sort=date' onclick="gtag('event','view_search_results', {'search_term': 'craiglist'})" ) 物件リスト]にも掲載しています。
-		if site.posts != undefined && site.posts.ja != undefined && site.posts.ja.rentals != undefined
-			each category in Object.keys(site.posts.ja.rentals)
-				h3= data.resources.area.ja[category] + 'エリア'
-				each post in site.posts.ja.rentals[category]
-					ul.sidenav
-						if post.hide == undefined || post.hide != true
-							li
-								a(href= post._url)= post.title
-						else
-							li
-								del= post.title
-		else
-			p 現在貸出可能な物件はありません
-		p
-			a(href="#sidebar") 新着物件リストを見る▼
+		p 当社では東京都内を中心に礼金０・保証人不要の賃貸アパートをご用意しています。以下のリストにない場合、#[a(href='https://tokyo.craigslist.org/search/apa?query=cowcowhomes+LTD&availabilityMode=0&sort=date' onclick="gtag('event','view_search_results', {'search_term': 'craiglist'})" ) 物件リスト]か#[a(href='https://cowcowhomes.blogspot.com/') 物件リスト2]にも掲載しています。
+		+rss-feed
 		h2 初期費用について
 		p 不動産を借りる場合、賃貸アパートによっては以下のような初期費用が掛かります。また、物件によっては残置物など特殊な条件が付いていることもあります
 		h3 礼金
@@ -60,8 +46,6 @@ block content
 		p 大体のアパートの場合、部屋面積と言ったらキッチン・トイレ・風呂を含めた面積のことを指します。ですが、いくつかの部屋（大体の場合、シェアハウス）では別途ルームのみの面積を指します
 
 	#sidebar
-		h2 新着物件リスト
-		+rss-feed
 
 block custom_footer
 	include /ja/_footer
