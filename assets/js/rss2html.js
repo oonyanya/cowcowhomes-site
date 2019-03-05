@@ -31,7 +31,16 @@ function addRssItem(json,rssbox)
 		new_a.setAttribute("href", rss_items[i]["link"]);
 		new_a.innerHTML = rss_items[i]["title"];
 
-		var gtag_text = "gtag('event','view_item', {})";
+		var random = Math.round( Math.random () * 32767 ) + 1; 
+		var detail = {
+			"items": [
+				{
+					"id": "" + random,
+					"name": rss_items[i]["title"],
+				}
+			]
+		};
+		var gtag_text = "gtag('event','view_item', " + JSON.stringify(detail) + ")";
 		new_a.setAttribute("onclick" , gtag_text );
 
 		root.appendChild(new_li);
