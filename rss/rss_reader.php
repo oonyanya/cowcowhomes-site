@@ -93,7 +93,8 @@ class CachedHttpReader
 {
   public function getif($url,$get_compress,$non_match)
   {
-    $cache = new Cache($url,$get_compress);
+    //継承先のクラス名を取得する
+    $cache = new Cache(get_class($this) . $url,$get_compress);
     if($cache->get_etag() == $non_match)
       return new Feed(null,$cache->get_etag());
     else
@@ -102,11 +103,12 @@ class CachedHttpReader
 
   public function get($url,$get_compress)
   {
-    $cache = new Cache($url,$get_compress);
+    //継承先のクラス名を取得する
+    $cache = new Cache(get_class($this) . $url,$get_compress);
 
     if($cache->is_not_expire())
     {
-      $strJson = $cache->get();
+      $parsed_str = $cache->get();
     } else {
       $result = $this->get_http_response($url);
       if($result == null)
@@ -174,12 +176,26 @@ class CachedHttpReader
   }
 }
 
-class CachedXmlReader extends CachedHttpReader
+class RssReader extends CachedHttpReader
 {
   protected function parse($str,&$freq,&$period)
   {
     $xml = $this->parse_xmlstr($str);
-    return $xml;
+    $strJson = $this->xml_to_json($xml);
+    $freq = intval($xml->channel->syn_updateFrequency);
+    $period = $xml->channel->syn_updatePeriod;
+    return $strJson;
+  }
+
+  //**********************************
+  // XML ⇒ JSONに変換する関数
+  //**********************************
+  private function xml_to_json($xml)
+  {
+     // JSON形式の文字列に変換
+     $json = json_encode($xml, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
+     // "\/" ⇒ "/" に置換
+     return preg_replace('/\\\\\//', '/', $json);
   }
 
   private function parse_xmlstr($xml)
@@ -210,30 +226,6 @@ class CachedXmlReader extends CachedHttpReader
         $this->xml_expand_attributes($child); // 再帰呼出
       }
     }
-  }
-
-}
-
-class RssReader extends CachedXmlReader
-{
-  protected function parse($str,&$freq,&$period)
-  {
-    $xml = parent::parse($str,$freq,$period);
-    $strJson = $this->xml_to_json($xml);
-    $freq = intval($xml->channel->syn_updateFrequency);
-    $period = $xml->channel->syn_updatePeriod;
-    return $strJson;
-  }
-
-  //**********************************
-  // XML ⇒ JSONに変換する関数
-  //**********************************
-  private function xml_to_json($xml)
-  {
-     // JSON形式の文字列に変換
-     $json = json_encode($xml, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
-     // "\/" ⇒ "/" に置換
-     return preg_replace('/\\\\\//', '/', $json);
   }
 
 }
