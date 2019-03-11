@@ -33,6 +33,7 @@ function addRssItem(json,rssbox)
 
 		var random = Math.round( Math.random () * 32767 ) + 1; 
 		var detail = {
+			"content_type": "product",
 			"items": [
 				{
 					"id": "" + random,
@@ -40,7 +41,7 @@ function addRssItem(json,rssbox)
 				}
 			]
 		};
-		var gtag_text = "gtag('event','view_item', " + JSON.stringify(detail) + ")";
+		var gtag_text = "gtag('event','select_content', " + JSON.stringify(detail) + ")";
 		new_a.setAttribute("onclick" , gtag_text );
 
 		root.appendChild(new_li);
