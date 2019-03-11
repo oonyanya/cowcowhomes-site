@@ -1,3 +1,14 @@
+function hashCode(str) {
+  var hash = 0, i, chr;
+  if (str.length === 0) return hash;
+  for (i = 0; i < str.length; i++) {
+    chr   = str.charCodeAt(i);
+    hash  = ((hash << 5) - hash) + chr;
+    hash |= 0; // Convert to 32bit integer
+  }
+  return hash;
+}
+
 function addRssItem(json,rssbox)
 {
 	if(json.length == 0)
@@ -31,7 +42,7 @@ function addRssItem(json,rssbox)
 		new_a.setAttribute("href", rss_items[i]["link"]);
 		new_a.innerHTML = rss_items[i]["title"];
 
-		var random = Math.round( Math.random () * 32767 ) + 1; 
+		var random = hashCode(rss_items[i]["title"]); 
 		var detail = {
 			"content_type": "product",
 			"items": [
