@@ -23,3 +23,6 @@ module.exports =
     basedir:__dirname + "/views"
     image: (src) ->
       common.image(src)
+
+  'coffee-script':
+    sourcemap: false
