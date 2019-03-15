@@ -1,4 +1,7 @@
 class Parser
+  parseData: (json)->
+    return json
+
   getItems: (json)->
     return json
 
@@ -7,6 +10,9 @@ class Parser
 
   getTitle: (items,i)->
     return ""
+
+  keepSummaryInHtml: ()->
+    return false
 
   getSummaryTitle: (items)->
     return ""
@@ -29,9 +35,11 @@ class Parser
       i++
     hash
 
-  addRssItem: (json, rssbox)->
-    if json.length == 0
+  addRssItem: (data, rssbox)->
+    if data.length == 0
       return
+
+    json = @parseData(data)
 
     rss_items = @getItems(json)
 
@@ -61,7 +69,7 @@ class Parser
       root.appendChild new_li
       i++
     summary_tag = rssbox.getElementsByClassName('summary')
-    if summary_tag.length == 1
+    if summary_tag.length == 1 && @keepSummaryInHtml() == false
       summary = summary_tag[0]
       summary.setAttribute 'href', @getSummaryLink(json)
       summary.innerHTML = @getSummaryTitle(json)
@@ -92,6 +100,26 @@ class RssParser extends Parser
   getSummaryLink: (json)->
     return json['channel']['link']
 
+class MyNaviParser extends Parser
+  parseData: (data)->
+    return $($.parseHTML(data))
+
+  getItems: (html)->
+    return html.find(".info_room_area")
+
+  getLink: (items,i) ->
+    return $(items[i]).find(".room_list a")[2].href
+
+  getTitle: (items,i)->
+    name = $(items[i]).find(".ttl_buil_area a").text()
+    price = $(items[i]).find(".room_list .buil_price span")[0].innerText
+    locations = $(items[i]).find(".info_room_box dd")[1].innerHTML
+    first_location = locations.split("<br>")[0];
+    return name + "&nbsp;" + price + "&nbsp;" + first_location
+
+  keepSummaryInHtml: ()->
+    return true
+
 window.addEventListener 'load', (->
   rssboxs = document.getElementsByClassName('rss-box')
   i = 0
@@ -100,14 +128,24 @@ window.addEventListener 'load', (->
     do (i) ->
       rssbox = rssboxs[i]
       rss_url = rssbox.getAttribute('data-rss-url')
-      $.ajax
-        type: 'GET'
-        url: '/rss/index.php?rss_url=' + rss_url
-        dataType: 'json'
-        success: (json) ->
-          parser = new RssParser
-          parser.addRssItem(json, rssbox)
-          return
+      if rss_url.match(/chintai.mynavi.jp/)
+         $.ajax
+           type: 'GET'
+           url: '/rss/index.php?format=xml&rss_url=' + rss_url
+           dataType: 'html'
+           success: (json) ->
+             parser = new MyNaviParser
+             parser.addRssItem(json, rssbox)
+             return
+      else
+         $.ajax
+           type: 'GET'
+           url: '/rss/index.php?rss_url=' + rss_url
+           dataType: 'json'
+           success: (json) ->
+             parser = new RssParser
+             parser.addRssItem(json, rssbox)
+             return
       return
     i++
   return
