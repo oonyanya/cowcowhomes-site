@@ -10,7 +10,7 @@ module.exports =
   ignores: ['readme.md', '*.md', '**/layout.jade', '**/_*', '.gitignore', 'ship.*conf', '*.cmd', 'common.coffee', '*.exe', '*.ps1']
 
   extensions: [
-    js_pipeline(files: 'assets/js/*.coffee', out: 'js/build.js', minify: true),
+    js_pipeline(files: 'assets/js/*.coffee'),
     css_pipeline(files: 'assets/css/*.styl', out: 'css/build.css', minify: true),
     dynamic_content()
   ]
@@ -18,11 +18,11 @@ module.exports =
   stylus:
     use: [axis(), rupture(), autoprefixer()]
 
+  'coffee-script':
+    sourcemap: false
+
   jade:
     pretty: true
     basedir:__dirname + "/views"
     image: (src) ->
       common.image(src)
-
-  'coffee-script':
-    sourcemap: false
