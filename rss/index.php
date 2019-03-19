@@ -1,11 +1,11 @@
-ï»¿<?php
-// â– ä½¿ã„æ–¹
+<?php
+// ¡Žg‚¢•û
 //
-//  index.php?rss_url=[URL] ã¿ãŸã„ã«ã—ã¦ä½¿ã„ã¾ã™ã€‚[URL]ã¯PHPã®urlencode()ãªã©ã§ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‰ã—ãŸå¥´ã‚’æ¸¡ã™å¿…è¦ãŒã‚ã‚Šã¾ã™ã€‚
+//  index.php?rss_url=[URL] ‚Ý‚½‚¢‚É‚µ‚ÄŽg‚¢‚Ü‚·B[URL]‚ÍPHP‚Ìurlencode()‚È‚Ç‚ÅƒGƒ“ƒR[ƒh‚µ‚½“z‚ð“n‚·•K—v‚ª‚ ‚è‚Ü‚·B
 //
-//  æ³¨æ„ç‚¹
+//  ’ˆÓ“_
 //
-//  åå‰ç©ºé–“ã®:ã¯_ã«ç½®ãæ›ãˆã‚‰ã‚Œã¾ã™
+//  –¼‘O‹óŠÔ‚Ì:‚Í_‚É’u‚«Š·‚¦‚ç‚ê‚Ü‚·
 //
 include 'rss_reader.php';
 
@@ -20,7 +20,7 @@ else
   $format = "json";
 
 $supportsGzip = strpos($_SERVER['HTTP_ACCEPT_ENCODING'], 'gzip') !== false;
-$supportsGzip = false;
+//$supportsGzip = false;
 if($format== "json")
 	$reader = new RssReader();
 else
