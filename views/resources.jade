@@ -137,11 +137,10 @@ mixin rss-feed(lang)
 			template
 				li.rss-item
 					a(href='' onclick="") todo
-	if lang == "ja"
-		.rss-box(data-rss-url='https%3A%2F%2Fchintai.mynavi.jp%2Fsearch%2Flist.html%3Fc%255BCompanyId%255D%3D12783%26t%3Dcompany%26')
-			a.summary(href='https://chintai.mynavi.jp/search/list.html?c%5BCompanyId%5D=12783&t=company&') マイナビ賃貸(オーナーの意向により日本人限定です)
-			progress(max='100')
-			ul.rss-items
-				template
-					li.rss-item
-						a(href='' onclick="") todo
+	.rss-box(data-rss-url='https%3A%2F%2Fchintai.mynavi.jp%2Fsearch%2Flist.html%3Fc%255BCompanyId%255D%3D12783%26t%3Dcompany%26')
+		a.summary(href='https://chintai.mynavi.jp/search/list.html?c%5BCompanyId%5D=12783&t=company&') マイナビ賃貸(オーナーの意向により日本人限定の物件が多いです)/My Navi(almost owner require Japanese)
+		progress(max='100')
+		ul.rss-items
+			template
+				li.rss-item
+					a(href='' onclick="") todo
