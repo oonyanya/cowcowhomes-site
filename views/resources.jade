@@ -129,7 +129,7 @@ mixin rss-feed(lang)
 		ul.rss-items
 			template
 				li.rss-item
-					img(src='' height="72")
+					img(src='/img/default.png' data-src='' height="72")
 					a(href='' onclick="")
 	- if(lang=="ja")
 		.rss-box(data-rss-url='https%3A%2F%2Fchintai.mynavi.jp%2Fsearch%2Flist.html%3Fc%255BCompanyId%255D%3D12783%26t%3Dcompany%26')
@@ -146,5 +146,5 @@ mixin rss-feed(lang)
 			ul.rss-items
 				template
 					li.rss-item
-						img(src='' height="72")
+						img(src='/img/default.png' data-src='' height="72")
 						a(href='' onclick="")

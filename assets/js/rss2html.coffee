@@ -1,3 +1,14 @@
+class ImageDelayLoader
+  @observer = new IntersectionObserver (entries) ->
+    for i in[0..entries.length - 1]
+      e = entries[i]
+      if e.isIntersecting
+        img = e.target
+        img.setAttribute 'src', img.getAttribute('data-src')
+
+  @register: (img)->
+    @observer.observe(img);
+
 class Parser
   parseData: (json)->
     return json
@@ -63,7 +74,8 @@ class Parser
         new_a.insertAdjacentHTML('afterbegin', @getTitle(rss_items,i))
       new_img = new_li.getElementsByTagName('img')[0]
       if typeof(new_img) != "undefined"
-        new_img.setAttribute 'src',@getImage(rss_items,i)
+        new_img.setAttribute 'data-src',@getImage(rss_items,i)
+        ImageDelayLoader.register(new_img)
       random = @hashCode(@getTitle(rss_items,i))
       detail = 
         'content_type': 'product'
@@ -133,7 +145,7 @@ class MyNaviParser extends Parser
   keepSummaryInHtml: ()->
     return true
 
-window.addEventListener 'load', (->
+window.addEventListener 'DOMContentLoaded', (->
   rssboxs = document.getElementsByClassName('rss-box')
   i = 0
   while i < rssboxs.length
