@@ -129,7 +129,8 @@ mixin rss-feed(lang)
 		ul.rss-items
 			template
 				li.rss-item
-					a(href='' onclick="") todo
+					img(src='' height="72")
+					a(href='' onclick="")
 	- if(lang=="ja")
 		.rss-box(data-rss-url='https%3A%2F%2Fchintai.mynavi.jp%2Fsearch%2Flist.html%3Fc%255BCompanyId%255D%3D12783%26t%3Dcompany%26')
 			a.summary(href='https://chintai.mynavi.jp/search/list.html?c%5BCompanyId%5D=12783&t=company&') マイナビ賃貸(オーナーの意向により日本人限定の物件が多いです)/My Navi(almost owner require Japanese)
@@ -137,7 +138,7 @@ mixin rss-feed(lang)
 			ul.rss-items
 				template
 					li.rss-item
-						a(href='' onclick="") todo
+						a(href='' onclick="")
 	- else
 		.rss-box(data-rss-url='https%3A%2F%2Ftokyo.craigslist.org%2Fsearch%2Fhhh%3FavailabilityMode%3D0%26format%3Drss%26query%3Dcowcowhomes%2BLTD%26sort%3Ddate%26lang%3Den%26cc%3Dus')
 			a.summary(href='')
@@ -145,4 +146,5 @@ mixin rss-feed(lang)
 			ul.rss-items
 				template
 					li.rss-item
-						a(href='' onclick="") todo
+						img(src='' height="72")
+						a(href='' onclick="")

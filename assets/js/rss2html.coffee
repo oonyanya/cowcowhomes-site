@@ -11,6 +11,9 @@ class Parser
   getTitle: (items,i)->
     return ""
 
+  getImage: (items,i)->
+    return ""
+
   keepSummaryInHtml: ()->
     return false
 
@@ -54,9 +57,13 @@ class Parser
     while i < len
       #複製してliタグを得る
       new_li = document.importNode(template.content, true).firstElementChild
-      new_a = new_li.firstElementChild
-      new_a.setAttribute 'href', @getLink(rss_items,i)
-      new_a.innerHTML = @getTitle(rss_items,i)
+      new_a = new_li.getElementsByTagName('a')[0]
+      if typeof(new_a) != "undefined"
+        new_a.setAttribute 'href', @getLink(rss_items,i)
+        new_a.insertAdjacentHTML('afterbegin', @getTitle(rss_items,i))
+      new_img = new_li.getElementsByTagName('img')[0]
+      if typeof(new_img) != "undefined"
+        new_img.setAttribute 'src',@getImage(rss_items,i)
       random = @hashCode(@getTitle(rss_items,i))
       detail = 
         'content_type': 'product'
@@ -93,6 +100,12 @@ class RssParser extends Parser
 
   getTitle: (items,i)->
     return items[i]['title']
+
+  getImage: (items,i)->
+    if typeof(items[i]['media_thumbnail@url']) == 'undefined'
+      return items[i]['enc_enclosure@resource']
+    else
+      return items[i]['media_thumbnail@url']
 
   getSummaryTitle: (json)->
     return json['channel']['title']
