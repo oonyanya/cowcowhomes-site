@@ -142,6 +142,9 @@ class MyNaviParser extends Parser
     first_location = locations.split("<br>")[0];
     return name + "&nbsp;" + price + "&nbsp;" + first_location
 
+  getImage: (items,i)->
+    return $($(items[i]).find(".lazyload")[1]).attr("data-src")
+
   keepSummaryInHtml: ()->
     return true
 
