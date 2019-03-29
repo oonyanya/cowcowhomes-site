@@ -10,7 +10,7 @@ html
 		meta(name='description', content='COWCOWHOMES is real estate company')
 		meta(name='author', content= "COWCOWHOMES.CO.LTD")
 		script(src='/js/jquery-3.3.1.min.js',defer='')
-		script(src='/js/hover.js',defer='')
+		!= js('/')
 		block custom_head
 		!= css('/')
 		// Global site tag (gtag.js) - Google Analytics
@@ -32,5 +32,3 @@ html
 				li
 					a(href='/en') English
 			block custom_footer
-
-		//!= js()
