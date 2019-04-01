@@ -1,10 +1,11 @@
 class ImageDelayLoader
-  @observer = new IntersectionObserver (entries) ->
+  @observer = new IntersectionObserver (entries, object) ->
     for i in[0..entries.length - 1]
       e = entries[i]
       if e.isIntersecting
         img = e.target
         img.setAttribute 'src', img.getAttribute('data-src')
+        object.unobserve(img)
 
   @register: (img)->
     @observer.observe(img);
