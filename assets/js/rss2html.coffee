@@ -86,13 +86,14 @@ class Parser
       root.appendChild new_li
       i++
     summary_tag = rssbox.getElementsByClassName('summary')
-    keep_summary = rssbox.getAttribute('data-keep-summry') != "true"
-    if summary_tag.length == 1 && keep_summary
+    if summary_tag.length == 1
       summary = summary_tag[0]
-      summary.setAttribute 'href', @getSummaryLink(json)
-      summary.innerHTML = @getSummaryTitle(json)
-      gtag_text = 'gtag(\'event\',\'view_search_results\', ' + @getSummaryTitle(json) + ')'
-      summary.setAttribute 'onclick', gtag_text
+      if summary.getAttribute == ""
+        summary.setAttribute 'href', @getSummaryLink(json)
+      if summary.innerHTML == ""
+        summary.innerHTML = @getSummaryTitle(json)
+        gtag_text = 'gtag(\'event\',\'view_search_results\', ' + @getSummaryTitle(json) + ')'
+        summary.setAttribute 'onclick', gtag_text
     progress = rssbox.getElementsByTagName('progress')[0]
     progress.style.display = 'none'
     return
