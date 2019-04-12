@@ -88,7 +88,7 @@ class Parser
     summary_tag = rssbox.getElementsByClassName('summary')
     if summary_tag.length == 1
       summary = summary_tag[0]
-      if summary.getAttribute == ""
+      if summary.getAttribute('href') == ""
         summary.setAttribute 'href', @getSummaryLink(json)
       if summary.innerHTML == ""
         summary.innerHTML = @getSummaryTitle(json)
