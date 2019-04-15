@@ -28,7 +28,7 @@ html
 		footer
 			ul#lang_switch
 				li
-					a(href='/ja') 日本語
+					+gen_lang_switch('ja','日本語')
 				li
-					a(href='/en') English
+					+gen_lang_switch('en','English')
 			block custom_footer

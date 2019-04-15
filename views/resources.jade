@@ -104,6 +104,21 @@ mixin facebook-plugin
 		blockquote.fb-xfbml-parse-ignore(cite='https://www.facebook.com/有限会社カウカウホームズ-905600372815879/')
 			a(href='https://www.facebook.com/有限会社カウカウホームズ-905600372815879/') 有限会社カウカウホームズ
 
+mixin gen_lang_switch(lang,label)
+	- if(post == undefined)
+		a(href='/#{lang}') #{label}
+	- else
+		- var tokens = post._url.split("/")
+		- var url = ""
+		- //0番目は常に空
+		- for(var i = 1;i < tokens.length; i++)
+			- url += "/"
+			- if(i == 2)
+				- url += lang
+			- else if(tokens[i] != "index.html")	//index.htmlはなくても動く
+				- url += tokens[i]
+		a(href='#{url}') #{label}
+
 mixin output_bread_list(post, lang)
 	ul
 		- for(var i = 0; i < post._categories.length; i++)
