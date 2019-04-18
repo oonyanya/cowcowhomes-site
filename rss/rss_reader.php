@@ -38,7 +38,7 @@ class Cache
     if($expire_str == "")
       return false;
     $current_time = new DateTime("now");
-    $expire = new DateTime();
+    $expire = new DateTime($expire_str);
     return $current_time <= $expire;
   }
 
