@@ -14,9 +14,10 @@ class CacheMeta
 class Cache
 {
   protected $cache_file;
-  protected $compressed_cache_file;
   protected $cache_meta;
+  protected $compressed_cache_file;
   protected $allow_compress;
+  protected $meta = null;
 
   public function __construct($url,$allow_compress)
   {
@@ -24,6 +25,11 @@ class Cache
     $this->cache_file = sprintf("%s.dat",$this->hasedStr($url));
     $this->compressed_cache_file = sprintf("%s.gz",$this->hasedStr($url));
     $this->cache_meta = sprintf("%s.meta",$this->hasedStr($url));
+    if(file_exists($this->cache_meta))
+    {
+      $meta = json_decode(@file_get_contents($this->cache_meta));
+      $this->meta = new CacheMeta($meta->expire,$meta->etag);
+    }
   }
 
   public function is_not_expire()
@@ -43,8 +49,8 @@ class Cache
     if(!empty($expire))
     {
       $etag = $this->hasedStr($content);
-      $meta = new CacheMeta($expire,$etag);
-      file_put_contents($this->cache_meta, json_encode($meta));
+      $this->meta = new CacheMeta($expire,$etag);
+      file_put_contents($this->cache_meta, json_encode($this->meta));
     }
   }
 
@@ -58,18 +64,16 @@ class Cache
 
   public function get_etag()
   {
-    if(!file_exists($this->cache_meta))
+    if($this->meta == null)
       return "";
-    $meta = json_decode(@file_get_contents($this->cache_meta));
-    return $meta->etag;
+    return $this->meta->etag;
   }
 
   public function get_expire()
   {
-    if(!file_exists($this->cache_meta))
+    if($this->meta == null)
       return "";
-    $meta = json_decode(@file_get_contents($this->cache_meta));
-    return $meta->expire;
+    return $this->meta->expire;
   }
 
   private function hasedStr($s)
