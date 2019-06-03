@@ -163,7 +163,7 @@ main iframe,p,table,img
 .query_button
 	color white
 
-.sidenav, .rss-items
+.sidenav
     list-style-type none
     li
         border-bottom solid 1px #ababab
@@ -175,10 +175,23 @@ main iframe,p,table,img
     li#sub_current
         background-color #efefef
     a,del
-        color #666
         background url("./icon_arrow1_gray.gif") 10px 50% no-repeat
-        padding 0px 0px 0px 28px
         display block
+
+.rss-items
+    list-style-type none
+    li
+        border-bottom solid 1px #ababab
+        line-height 1.5em
+        padding 10px
+        margin 0px
+        display flex
+        &:hover
+            background-color #f5f5f5
+        *
+            color #666
+    li#sub_current
+        background-color #efefef
 
 footer
     border-top solid 20px #e8c135

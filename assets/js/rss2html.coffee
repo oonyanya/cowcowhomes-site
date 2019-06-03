@@ -26,6 +26,9 @@ class Parser
   getImage: (items,i)->
     return ""
 
+  getDescription: (items,i)->
+    return ""
+
   getSummaryTitle: (items)->
     return ""
 
@@ -74,6 +77,9 @@ class Parser
       if typeof(new_img) != "undefined"
         new_img.setAttribute 'data-src',@getImage(rss_items,i)
         ImageDelayLoader.register(new_img)
+      new_desc = new_li.getElementsByClassName('description')[0]
+      if typeof(new_desc) != "undefined"
+        new_desc.insertAdjacentHTML('afterbegin', @getDescription(rss_items,i))
       random = @hashCode(@getTitle(rss_items,i))
       detail = 
         'content_type': 'product'
@@ -120,6 +126,12 @@ class RssParser extends Parser
       return items[i]['enc_enclosure@resource']
     else
       return items[i]['media_thumbnail@url']
+
+  getDescription: (items,i)->
+    if typeof(items[i]['atom_summary']) == 'undefined'
+      return items[i]['description'].substring(0,70) + "..."
+    else
+      return items[i]['atom_summary'].substring(0,70) + "..."
 
   getSummaryTitle: (json)->
     return json['channel']['title']
