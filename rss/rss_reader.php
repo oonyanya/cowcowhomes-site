@@ -185,6 +185,8 @@ class RssReader extends CachedHttpReader
   protected function parse($str,&$freq,&$period)
   {
     $xml = $this->parse_xmlstr($str);
+    if($xml == null)
+      return sprintf("{\"error\":\"%s\"}",$str);
     $strJson = $this->xml_to_json($xml);
     $freq = intval($xml->channel->syn_updateFrequency);
     $period = $xml->channel->syn_updatePeriod;
@@ -210,6 +212,8 @@ class RssReader extends CachedHttpReader
     $xml = preg_replace("/_\/\//", "://", $xml);
     // XML文字列をオブジェクトに変換（CDATAも対象とする）
     $objXml = simplexml_load_string($xml, NULL, LIBXML_NOCDATA);
+    if($objXml == false)
+      return null;
     // 属性を展開する
     $this->xml_expand_attributes($objXml);
 
