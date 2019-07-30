@@ -138,10 +138,6 @@ class CachedHttpReader
   private function calc_expire_hour($freq,$period)
   {
     switch($period){
-      case "hourly":
-        $update_span = new DateInterval("PT6H"); //1時間未満だとサーバーが落ちるかもしれない
-        $freq = 1;
-        break;
       case "daily":
         $update_span = new DateInterval("P1D");
         break;
