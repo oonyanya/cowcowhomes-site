@@ -186,7 +186,8 @@ class RssReader extends CachedHttpReader
   {
     $xml = $this->parse_xmlstr($str);
     if($xml == null)
-      return sprintf("{\"error\":\"%s\"}",$str);
+      //JSON‚É‰üs‚ÍŠÜ‚ß‚ç‚ê‚È‚¢
+      return sprintf("{\"error\":\"%s\"}",str_replace(array("\r\n", "\r", "\n"), '', $str));
     $strJson = $this->xml_to_json($xml);
     $freq = intval($xml->channel->syn_updateFrequency);
     $period = $xml->channel->syn_updatePeriod;
