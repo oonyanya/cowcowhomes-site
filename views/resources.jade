@@ -89,6 +89,11 @@
 		}
 -
 
+mixin access_analyze
+	script(src='//accaii.com/cowcowhomes/script.js', async='')
+	noscript
+		img(src='//accaii.com/cowcowhomes/script?guid=on')
+
 mixin facebook-plugin
 	#fb-root
 	script(async='').
@@ -147,7 +152,7 @@ mixin rss-feed(lang)
 						b
 							a(href='' onclick="")
 						.description
-		a.summary(href='' onclick="gtag('event','view_search_results', {'search_term': 'blogger'})") MORE APARTMENTS
+		a.summary(href='') MORE APARTMENTS
 	- if(lang=="ja")
 		.rss-box(data-rss-url='https%3A%2F%2Fchintai.mynavi.jp%2Fsearch%2Flist.html%3Fc%255BCompanyId%255D%3D12783%26t%3Dcompany%26')
 			progress(max='100')
@@ -158,7 +163,7 @@ mixin rss-feed(lang)
 						span
 							b
 								a(href='' onclick="")
-			a.summary(href='https://chintai.mynavi.jp/search/list.html?c%5BCompanyId%5D=12783&t=company&' onclick="gtag('event','view_search_results', {'search_term': 'mynavi'})") マイナビ賃貸のほかの物件を見る(オーナーの意向により日本人限定の物件が多いです)
+			a.summary(href='https://chintai.mynavi.jp/search/list.html?c%5BCompanyId%5D=12783&t=company&') マイナビ賃貸のほかの物件を見る(オーナーの意向により日本人限定の物件が多いです)
 	- else
 		.rss-box(data-rss-url='https%3A%2F%2Ftokyo.craigslist.org%2Fsearch%2Fhhh%3FavailabilityMode%3D0%26format%3Drss%26query%3Dcowcowhomes%2BLTD%26sort%3Ddate%26lang%3Den%26cc%3Dus')
 			progress(max='100')
@@ -170,4 +175,4 @@ mixin rss-feed(lang)
 							b
 								a(href='' onclick="")
 							.description
-			a.summary(href='' onclick="gtag('event','view_search_results', {'search_term': 'craiglist'})") more apartment in craigslist tokyo
+			a.summary(href='') more apartment in craigslist tokyo

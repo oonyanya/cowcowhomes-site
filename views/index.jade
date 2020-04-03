@@ -1,16 +1,11 @@
+include resources.jade
+
 doctype html
 html
 
 	head
 		meta(charset='utf-8')
-		meta(name='google-site-verification', content='9LKBgPoXcC2CGFmku3TdHHcrNahy9Orn4RaKQfQA_hg')
-		// Global site tag (gtag.js) - Google Analytics
-		script(src='https://www.googletagmanager.com/gtag/js?id=UA-130573235-1', async='')
-		script.
-			window.dataLayer = window.dataLayer || [];
-			function gtag(){dataLayer.push(arguments);}
-			gtag('js', new Date());
-			gtag('config', 'UA-130573235-1');
+		+access_analyze()
 		script(type='text/javascript'). 
 			(function(){
 				Object.defineProperty(document,"referrer",{value:document.referrer });
