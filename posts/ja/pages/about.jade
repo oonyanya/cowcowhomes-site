@@ -34,7 +34,8 @@ block article
 			td 東京都知事13(1)99902号
 		tr
 			th メールアドレス
-			td= data.resources.company_info.ja.mail
+			td
+				a(href="mailto:#{data.resources.company_info.ja.mail}")= data.resources.company_info.ja.mail
 		tr
 			th LINE ID
 			td= data.resources.company_info.ja.lineid

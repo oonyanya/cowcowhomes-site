@@ -3,7 +3,8 @@
     = data.resources.company_info.en.name
   .address
     p.telphone= data.resources.company_info.en.tel
-    p= data.resources.company_info.en.mail
+    p
+      a(href="mailto:#{data.resources.company_info.ja.mail}")= data.resources.company_info.ja.mail
     p= data.resources.company_info.en.opentime
 nav.global_nav
   .top_menu_label MENU

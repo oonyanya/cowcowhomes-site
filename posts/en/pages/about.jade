@@ -31,7 +31,8 @@ block article
 			td= data.resources.company_info.en.mobile
 		tr
 			th Mail address
-			td= data.resources.company_info.en.mail
+			td
+				a(href="mailto:#{data.resources.company_info.ja.mail}")= data.resources.company_info.ja.mail
 		tr
 			th LINE ID
 			td= data.resources.company_info.en.lineid
