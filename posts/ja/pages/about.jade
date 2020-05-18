@@ -38,7 +38,8 @@ block article
 				a(href="mailto:#{data.resources.company_info.ja.mail}")= data.resources.company_info.ja.mail
 		tr
 			th LINE ID
-			td= data.resources.company_info.ja.lineid
+			td
+				a(href="https://line.me/ti/p/%40#{data.resources.company_info.ja.lineid}")= data.resources.company_info.ja.lineid
 		tr
 			th 加盟店リスト
 			td

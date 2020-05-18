@@ -35,7 +35,8 @@ block article
 				a(href="mailto:#{data.resources.company_info.ja.mail}")= data.resources.company_info.ja.mail
 		tr
 			th LINE ID
-			td= data.resources.company_info.en.lineid
+			td
+				a(href="https://line.me/ti/p/%40#{data.resources.company_info.ja.lineid}")= data.resources.company_info.ja.lineid
 		tr
 			th real estate business license number
 			td No. 13(1)99902
