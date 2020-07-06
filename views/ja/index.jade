@@ -13,15 +13,11 @@ block custom_header
 block content
 	#infomation
 		#topics
-			#summary
-				img(src='/img/building_house2.png')
-				p #[a(href='/posts/ja/rentals') 賃貸アパート] では当社が貸主の物件や仲介物件を見ることができます
-			#summary
-				img(src='/img/building_house3.png')
-				p #[a(href='/posts/ja/sales') 売買] では当社が売主や仲介の物件を見ることができます
-			#summary
-				img(src='/img/business_icon_big_company.png')
-				p #[a(href='/posts/ja/pages/about.html') 会社案内] では会社の所在地や問い合わせ先を記載しています
+			- for(var i = 0; i < data.resources.pages.ja.length; i++)
+				- page = data.resources.pages.ja[i]
+				#summary
+					img(src='#{page.thumbnail}')
+					p #[a(href='#{page.url}') #{page.title}] #{page.description}
 		#prerelease
 			h2 プレリリース
 			table

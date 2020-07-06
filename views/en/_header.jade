@@ -11,9 +11,7 @@ nav.global_nav
   ul.top_menu
     li
       a(href='/en') TOP
-    li.dropdown-parent
-      a(href='/posts/en/rentals') RENTAL APARTMENT
-    li.dropdown-parent
-      a(href='/posts/en/sales') SALE HOUSE
-    li
-      a(href='/posts/en/pages/about.html') ABOUT
+    - for(var i = 0; i < data.resources.pages.en.length; i++)
+      - page = data.resources.pages.en[i]
+      li.dropdown-parent
+        a(href='#{page.url}') #{page.title}
