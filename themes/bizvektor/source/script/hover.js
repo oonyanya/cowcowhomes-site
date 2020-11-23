@@ -1,22 +1,25 @@
 (function() {
-  window.addEventListener('resize', function() {
+  window.addEventListener("resize", function() {
     var windowWidth;
-    if (typeof $ === "undefined") {
-      return;
-    }
     windowWidth = window.innerWidth;
     if (windowWidth >= 768) {
-      $('.dropdown-content').hide();
-      $('.dropdown-parent').hover((function() {
-        $('.dropdown-content').show();
-      }), function() {
-        $('.dropdown-content').hide();
+      document.querySelector('.dropdown-content').style.display = "none";
+      document.querySelector('.dropdown-parent').addEventListener("mouseover",function() {
+        var element = document.querySelector('.dropdown-content');
+        if(element.style.display == "none")
+          element.style.display = "";
+        else
+          element.style.display = "none";
       });
-      $('.top_menu').show();
+      document.querySelector('.top_menu').style.display = "";
     } else {
-      $('.top_menu').hide();
-      $('.global_nav').click(function() {
-        $('.top_menu').toggle();
+      document.querySelector('.top_menu').style.display = "none";
+      document.querySelector('.global_nav').addEventListener("click",function() {
+        var element = document.querySelector('.top_menu');
+        if(element.style.display == "none")
+          element.style.display = "";
+        else
+          element.style.display = "none";
       });
     }
   });
