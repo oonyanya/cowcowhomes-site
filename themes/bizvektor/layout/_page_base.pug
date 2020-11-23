@@ -1,0 +1,12 @@
+﻿include _common
+
+header
+	block custom_header
+main
+	block content
+footer
+	ul#lang_switch
+		each item in gen_lang_switches()
+			li
+				a(href=`${item.url}`) #{item.label}
+	block custom_footer

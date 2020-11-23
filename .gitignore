@@ -1,5 +1,8 @@
 .DS_Store
-node_modules
-public
-img
-!.keep
+Thumbs.db
+db.json
+*.log
+node_modules/
+public/
+.deploy*/
+package-lock.json

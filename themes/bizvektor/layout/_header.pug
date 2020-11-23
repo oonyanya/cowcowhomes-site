@@ -1,0 +1,18 @@
+﻿- res = get_resouce()
+
+#company_infomation
+  #logo
+    = res.company_info.name
+  .address
+    p(telphone=`${res.company_info.tel}`)
+    p
+      a(href=`mailto:${res.company_info.mail}`) #{res.company_info.mail}
+    p= res.company_info.opentime
+nav.global_nav
+  .top_menu_label MENU
+  ul.top_menu
+    li
+      a(href='/') TOP
+    each item in get_pages()
+      li.dropdown-parent
+        a(href=`${item.path}`) #{item.title}

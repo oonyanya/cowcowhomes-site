@@ -1,0 +1,61 @@
+# Hexo Configuration
+## Docs: https://hexo.io/docs/configuration.html
+## Source: https://github.com/hexojs/hexo/
+
+# Site
+title: cowcowhomes.ltd
+subtitle: ''
+description: ''
+keywords:
+author: cowcowhomes
+language: [ja,en]
+timezone: ''
+
+url: https://www.cowcowhomes.com
+root: /
+permalink: :language/:year/:month/:day/:title/
+new_post_name: :language/:year/:month/:day/:title.md
+post_asset_folder: true
+per_page: 0
+pretty_urls:
+  trailing_index: false
+  trailing_html: false
+
+theme: bizvektor
+
+highlight:
+  enable: true
+  line_number: false
+
+plugins:
+  hexo-multilang:
+    # languageと合わせること
+    languages: [ja, en]  
+
+    pagination-dir: page
+
+    index-generator:
+      per-page: 5
+      order-by: -date
+      index-dir: 
+      default-lang: en
+
+    archive-generator:
+      per-page: 10
+      order-by: -date
+      archives-dir: archives
+      yearly: true
+      monthly: true
+      daily: false
+
+    category-generator:
+      per-page: 10
+      order-by: -date
+      categories-dir: categories
+      enable-index-page: true
+
+    tag-generator:
+      per-page: 5
+      order-by: -date
+      tags-dir: tags
+      enable-index-page: true

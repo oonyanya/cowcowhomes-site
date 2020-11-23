@@ -1,0 +1,7 @@
+- res = get_resouce()
+mixin contact_from(title,body)
+	#contact
+		.address
+			p.telphone= res.company_info.tel
+			p= res.company_info.opentime
+		a.query_button(href=`https://docs.google.com/forms/d/e/1FAIpQLSdrAuJcdx_W-oJf1iA8b86OlqbRj2cWzzKhvnIfeHmvLVYtZQ/viewform?usp=pp_url&entry.2123497816&entry.1978971318=${encodeURIComponent(title)}&entry.296456271=${encodeURIComponent(body)}`) #{res.company_info.query_button_label}

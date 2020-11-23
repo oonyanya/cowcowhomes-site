@@ -1,0 +1,45 @@
+doctype html
+html(lang='ja')
+head
+	meta(charset='utf-8')
+	title #{page.title}
+	meta(name='viewport' content='width=device-width, initial-scale=1')
+	| !{css('/css/layout.css')}
+	| !{css('/css/base.css')}
+	| !{js('/script/hover.js')}
+	| !{js('/script/jquery-3.3.1.min.js')}
+body
+	- if(page.base == '')
+		script(type='text/javascript'). 
+			(function(){
+				Object.defineProperty(document,"referrer",{value:document.referrer });
+
+				location.href = switch_lang(location);
+
+				function switch_lang(location)
+				{
+					var lang = browserLanguage();
+					if(lang == undefined)
+						lang = "ja"
+					else if(lang != "ja")
+						lang = "en"
+					return location.protocol + "//" + location.host + "/" + lang  + location.pathname + location.search + location.hash;
+				}
+
+				function browserLanguage() {
+				  try {
+				    return (navigator.browserLanguage || navigator.language || navigator.userLanguage).substr(0,2)
+				  }
+				  catch(e) {
+				    return undefined;
+				  }
+				}
+			})();
+		div
+			p This site is #{page.title}. Which language do you prefer?
+			ul#lang_switch
+				each item in get_langs()
+					li
+						a(href=`/${item}`) #{item}
+	-else
+		| !{body}

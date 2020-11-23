@@ -1,0 +1,27 @@
+extend _page_base
+
+block custom_header
+	include _header
+	#main_titile
+		- if(page != undefined)
+			h1 #{page.title}
+	nav#bread
+
+block content
+	#infomation
+		- if(is_archive() || is_category() || is_tag())
+			each item in page.posts.toArray()
+				#summary
+					a(href=`${url_for(item.path)}`) #{item.title}
+		- else
+			each item in page.info
+				#summary
+					a(href=`${url_for(item.path)}`) #{item.name}
+		ul
+			- if(page.prev)
+				li a(href=`/${page.prev_link}`) Prev
+			- if(page.prev)
+				li a(href=`/${page.nex_link}`) Next
+
+block custom_footer
+	include _footer

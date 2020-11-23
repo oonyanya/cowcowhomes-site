@@ -1,0 +1,15 @@
+extend _page_base
+
+block custom_header
+	include _header
+	#main_titile
+		- if(page != undefined)
+			h1 #{page.title}
+	nav#bread
+
+block content
+	#infomation
+		| !{page.content}
+
+block custom_footer
+	include _footer

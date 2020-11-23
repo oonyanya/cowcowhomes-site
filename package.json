@@ -1,24 +1,28 @@
 {
-  "name": "cowcowhomes-site",
-  "description": "about cowcowhomes",
+  "name": "hexo-site",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "build": "hexo generate",
+    "clean": "hexo clean",
+    "deploy": "hexo deploy",
+    "server": "hexo server"
+  },
+  "hexo": {
+    "version": "5.2.0"
+  },
   "dependencies": {
-    "autoprefixer-stylus": "0.9.x",
-    "axis": "0.6.x",
-    "coffee-script": "1.x",
-    "css-pipeline": "0.3.x",
-    "dynamic-content": "^0.3.0",
-    "jade": "1.x",
-    "js-pipeline": "0.2.x",
-    "jstransformer-marked": "1.x",
-    "marked": "0.3.x",
-    "roots-yaml": "0.0.4",
-    "rupture": "0.6.x",
-    "stylus": "0.54.x",
-    "prompt": "1.0.0",
-    "async": "0.2.10",
-    "fs-extra": "1.0.0",
-    "replaceall": "0.1.6",
-    "format-currency": "1.0.0",
-    "gm": "1.21.x"
+    "hexo": "hexojs/hexo",
+    "hexo-generator-archive": "^1.0.0",
+    "hexo-generator-category": "^1.0.0",
+    "hexo-generator-index": "^2.0.0",
+    "hexo-generator-tag": "^1.0.0",
+    "hexo-multilang": "^0.3.4",
+    "hexo-renderer-coffeescript": "^0.2.0",
+    "hexo-renderer-ejs": "^1.0.0",
+    "hexo-renderer-marked": "^3.0.0",
+    "hexo-renderer-pug": "^1.0.0",
+    "hexo-renderer-stylus": "^2.0.0",
+    "hexo-server": "^2.0.0"
   }
 }

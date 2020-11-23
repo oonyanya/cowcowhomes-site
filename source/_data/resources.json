@@ -1,0 +1,108 @@
+{
+	"ja": {
+		"lang_name":"日本語",
+		"company_info": {
+			"name": "有限会社 カウカウホームズ",
+			"tel": "03-6458-1098",
+			"opentime": "営業時間 11時から18時",
+			"mail": "daisaku@cowcowhomes.com",
+			"about_page_url": "/ja/about.html",
+			"about_page_title": "カウカウホームズについて",
+			"image_path":"/ja/image/accelerate.png",
+			"mobile_image_path":"/ja/image/accelerate_mobile.png",
+			"query_button_label":"お問い合わせはこちらから"
+		},
+		"index": {
+			"prerelease_title":"プレリリース",
+			"prerelease_list":[
+				{
+					"date":"2019/03/01",
+					"text":"物件リストをブログ管理にしました(最短で一日ごとの更新になります)"
+				},
+				{
+					"date":"2016/12/12",
+					"text":"ホームページを制作しました"
+				}
+			]
+		},
+		"pages":[
+			{
+				"path":"/ja/rentals",
+				"title":"賃貸アパート",
+				"thumbnail":"/image/building_house2.png",
+				"summary":"当社が貸主の物件や仲介物件を見ることができます"
+			},
+			{
+				"path":"/ja/sales",
+				"title":"売買",
+				"thumbnail":"/image/building_house3.png",
+				"summary":"当社が売主や仲介の物件を見ることができます"
+			},
+			{
+				"path":"/ja/handout.html",
+				"title":"補助金申請",
+				"thumbnail":"/image/business_man3_1_question.png",
+				"summary":"補助金申請の代行などを行っております"
+			},
+			{
+				"path":"/ja/about.html",
+				"title":"会社案内",
+				"thumbnail":"/image/business_icon_big_company.png",
+				"summary":"会社の所在地や問い合わせ先を記載しています"
+			}
+		]
+	},
+	"en": {
+		"lang_name":"English",
+		"company_info": {
+			"name": "COWCOWHOMES.LTD",
+			"tel": "03-6458-1098",
+			"opentime": "OPEN TIME 11AM-18PM",
+			"mail": "daisaku@cowcowhomes.com",
+			"about_page_url": "/en/about.html",
+			"about_page_title": "ABOUT COWCOWHOMES",
+			"image_path":"/en/image/accelerate.png",
+			"mobile_image_path":"/en/image/accelerate_mobile.png",
+			"query_button_label":"Query Form"
+		},
+		"index": {
+			"prerelease_title":"NEWS",
+			"prerelease_list":[
+				{
+					"date":"2019/03/01",
+					"text":"We make apartment list in blog space(update in the shortest one day)"
+				},
+				{
+					"date":"2016/12/12",
+					"text":"We made home page"
+				}
+			]
+		},
+		"pages":[
+			{
+				"path":"/en/rentals",
+				"title":"RENTAL APARTMENT",
+				"thumbnail":"/image/building_house2.png",
+				"summary":"Listing broking rental apartment or my company's own."
+			},
+			{
+				"path":"/en/sales",
+				"title":"SALE HOUSE",
+				"thumbnail":"/image/building_house3.png",
+				"summary":"Listing broking sale apartment or my company's own."
+			},
+			{
+				"path":"/en/handout.html",
+				"title":"HANDOUT",
+				"thumbnail":"/image/business_man3_1_question.png",
+				"summary":"We can help handout"
+			},
+			{
+				"path":"/en/about.html",
+				"title":"ABOUT",
+				"thumbnail":"/image/business_icon_big_company.png",
+				"summary":"Describing location of company or telephone number and mail etc."
+			}
+		]
+	}
+}

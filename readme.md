@@ -1,41 +1,53 @@
-# cowcowhomes-site
+ç‰›ç‰›ä¸å‹•ç”£ã®ã‚µã‚¤ãƒˆã§ã™
 
-‹‹•s“®Y‚ÌƒTƒCƒg‚Å‚·
+## æ³¨æ„äº‹é …
 
-## ’ˆÓ–€
+assets/imgãƒ•ã‚©ãƒ«ãƒ€ãƒ¼ä»¥ä¸‹ã®ãƒ•ã‚¡ã‚¤ãƒ«ã¯gitã§ã¯ç®¡ç†ã—ã¦ã„ã¾ã›ã‚“ã€‚daisaku@cowcowhomes.comã¨ã„ã†ã‚¢ã‚«ã‚¦ãƒ³ãƒˆã®googleãƒ‰ãƒ©ã‚¤ãƒ–
 
-assets/imgƒtƒHƒ‹ƒ_[ˆÈ‰º‚Ìƒtƒ@ƒCƒ‹‚Ígit‚Å‚ÍŠÇ—‚µ‚Ä‚¢‚Ü‚¹‚ñBdaisaku@cowcowhomes.com‚Æ‚¢‚¤ƒAƒJƒEƒ“ƒg‚Ìgoogleƒhƒ‰ƒCƒu
-
+```
 .\gdrive-windows-x64.exe sync upload .\assets\img\ 1gMOz4dX75PRZ4E1DyHftNw7xGZOKIO3w
+```
 
-## Setup
 
-- xampp‚ğCƒhƒ‰ƒCƒu‚Ìƒ‹[ƒg‚ÉƒCƒ“ƒXƒg[ƒ‹‚·‚é
-- node.js 6.9.2‚ğƒCƒ“ƒXƒg[ƒ‹‚·‚é
-- GraphicsMagick-1.3.25-Q16-win64-dll.exe‚ğ[SourceForge](https://sourceforge.net/projects/graphicsmagick/files/graphicsmagick-binaries/1.3.25/GraphicsMagick-1.3.25-Q16-win64-dll.exe/download)‚©‚çƒ_ƒEƒ“ƒ[ƒh‚µ‚ÄAƒCƒ“ƒXƒg[ƒ‹‚·‚é
-- ƒRƒ}ƒ“ƒhƒvƒƒ“ƒvƒg‚ğŠÇ—ÒŒ ŒÀ‚Å—§‚¿ã‚°‚ÄAnpm -i roots -g‚ğÀs‚·‚é
-- ‚±‚ÌƒŠƒ|ƒWƒgƒŠ[‚ğgithub‚©‚ç—‚Æ‚µ‚ÄA‚±‚ÌƒŠƒ|ƒWƒgƒŠ[‚ª‚ ‚éƒtƒHƒ‹ƒ_[‚ÉˆÚ“®‚·‚é
-- .\gdrive-windows-x64.exe list‚ğÀs‚·‚é
-- ‚È‚ñ‚¿‚á‚ç‚©‚ñ‚¿‚á‚ç‚ğŠJ‚¯‚Æ‘‚¢‚Ä‚ ‚é‚Ì‚ÅA‚»‚ê‚ğƒuƒ‰ƒEƒU[‚ÅŠJ‚«Adaisaku@cowcowhomes.com‚Æ“¯Šú‚·‚é
-- gdrive‚Ìg—p‹–‰Â‚ğ‹‚ß‚ç‚ê‚é‚Ì‚Å‹–‰Â‚·‚é
-- .\gdrive-windows-x64.exe sync download 1gMOz4dX75PRZ4E1DyHftNw7xGZOKIO3w .\assets\img\‚ğÀs‚·‚é
-- npm install‚ğÀs‚·‚é
-- watch.cmd‚ğ‹N“®‚µ‚ÄAƒuƒ‰ƒEƒU[‚Ålocalhost‚Æ“ü—Í‚·‚é
+- xamppã‚’Cãƒ‰ãƒ©ã‚¤ãƒ–ã®ãƒ«ãƒ¼ãƒˆã«ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«ã™ã‚‹
+- node.jsã‚’ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«ã™ã‚‹
+- ã“ã®ãƒªãƒã‚¸ãƒˆãƒªãƒ¼ã‚’githubã‹ã‚‰è½ã¨ã—ã¦ã€ã“ã®ãƒªãƒã‚¸ãƒˆãƒªãƒ¼ãŒã‚ã‚‹ãƒ•ã‚©ãƒ«ãƒ€ãƒ¼ã«ç§»å‹•ã™ã‚‹
+- .\gdrive-windows-x64.exe listã‚’å®Ÿè¡Œã™ã‚‹
+- ãªã‚“ã¡ã‚ƒã‚‰ã‹ã‚“ã¡ã‚ƒã‚‰ã‚’é–‹ã‘ã¨æ›¸ã„ã¦ã‚ã‚‹ã®ã§ã€ãã‚Œã‚’ãƒ–ãƒ©ã‚¦ã‚¶ãƒ¼ã§é–‹ãã€daisaku@cowcowhomes.comã¨åŒæœŸã™ã‚‹
+- gdriveã®ä½¿ç”¨è¨±å¯ã‚’æ±‚ã‚ã‚‰ã‚Œã‚‹ã®ã§è¨±å¯ã™ã‚‹
+- .\gdrive-windows-x64.exe sync download 1gMOz4dX75PRZ4E1DyHftNw7xGZOKIO3w .\assets\img\ã‚’å®Ÿè¡Œã™ã‚‹
+- npm installã‚’å®Ÿè¡Œã™ã‚‹
+- watch.cmdã‚’èµ·å‹•ã—ã¦ã€ãƒ–ãƒ©ã‚¦ã‚¶ãƒ¼ã§localhostã¨å…¥åŠ›ã™ã‚‹
 
-¦Tortise Git‚ÆGit for Windows‚à“¯‚É•K—v‚É‚È‚è‚Ü‚·
+â€»Tortise Gitã¨Git for Windowsã‚‚åŒæ™‚ã«å¿…è¦ã«ãªã‚Šã¾ã™
 
-## •¨Œˆê——‚Ì•ÏX‚Ìd•û
+## ç‰©ä»¶ä¸€è¦§ã®å¤‰æ›´ã®ä»•æ–¹
 
-craiglist‚âblogger‚ÉƒƒOƒCƒ“‚µ‚Ä‚­‚¾‚³‚¢B
-craiglist‚É“Še‚·‚éÛ‚Í
+craiglistã‚„bloggerã«ãƒ­ã‚°ã‚¤ãƒ³ã—ã¦ãã ã•ã„ã€‚
+craiglistã«æŠ•ç¨¿ã™ã‚‹éš›ã¯
 
+```
 COWCOWHOMES.CO.LTD
 TEL 03-6458-1098
-URL http://cowcowhomes.com
+MOBILE 090-8432-6216
+URL http://www.cowcowhomes.com/sabouten
 Real estate business license number No. 13(1)99902
+```
 
-‚Ì•¶š‚ğ“ü‚ê‚Ä‚­‚¾‚³‚¢
+# è¨˜äº‹ã®ä½œã‚Šæ–¹
+hexo new page [title]ã§ã¯ã¾ã¨ã‚‚ã«ä½œã‚Œã¾ã›ã‚“
+æ‰‹å‹•ã§ä»¥ä¸‹ã®æ„Ÿã˜ã«ãªã‚‹ã‚ˆã†ã«è¨˜äº‹ã‚’ä½œã£ã¦ãã ã•ã„
 
-## ƒz[ƒ€ƒy[ƒW‚âƒXƒ^ƒCƒ‹ƒV[ƒg‚Ì•ÏX‚Ìd•û
+/[language]/[title]/index.md
 
-Ú‚µ‚¢‚±‚Æ‚Íviews.md‚É‘‚¢‚Ä‚ ‚é‚Ì‚ÅA‚±‚Ìƒtƒ@ƒCƒ‹‚ğQÆ‚µ‚½‚¤‚¦‚Å•ÏX‚µ‚Ä‚­‚¾‚³‚¢B•ÏX‚µ‚½ê‡Awatch.cmd‚ğÀs‚µ‚È‚¢‚Æ”½‰f‚³‚ê‚Ü‚¹‚ñB‚Ü‚½A–{”ÔŠÂ‹«‚É”½‰f‚µ‚½‚¢ê‡‚Í•¨Œˆê——‚É‘‚¢‚Ä‚ ‚éè‡‚É]‚Á‚Ä‚­‚¾‚³‚¢B
+index.mdã¯ä»¥ä¸‹ã®ã‚ˆã†ã«ã—ã¦ãã ã•ã„
+
+---
+layout: page
+title: [title]
+language: [laguage]
+date: 2020-11-20 11:42:59
+tags:
+---
+
+æ‹¡å¼µå­ã‚’pugã«ã™ã‚Œã°pugã‚‚ä½¿ç”¨å¯èƒ½ã§ã™
