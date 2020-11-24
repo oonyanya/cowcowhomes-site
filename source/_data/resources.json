@@ -8,8 +8,8 @@
 			"mail": "daisaku@cowcowhomes.com",
 			"about_page_url": "/ja/about.html",
 			"about_page_title": "カウカウホームズについて",
-			"image_path":"/ja/image/accelerate.png",
-			"mobile_image_path":"/ja/image/accelerate_mobile.png",
+			"image_path":"/ja/image/accelerate.svg",
+			"mobile_image_path":"/ja/image/accelerate.svg",
 			"query_button_label":"お問い合わせはこちらから"
 		},
 		"index": {
@@ -61,8 +61,8 @@
 			"mail": "daisaku@cowcowhomes.com",
 			"about_page_url": "/en/about.html",
 			"about_page_title": "ABOUT COWCOWHOMES",
-			"image_path":"/en/image/accelerate.png",
-			"mobile_image_path":"/en/image/accelerate_mobile.png",
+			"image_path":"/en/image/accelerate.svg",
+			"mobile_image_path":"/en/image/accelerate.svg",
 			"query_button_label":"Query Form"
 		},
 		"index": {
