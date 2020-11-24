@@ -2,3 +2,49 @@ RewriteEngine on
 RewriteCond %{HTTP_HOST} ^(cowcowhomes\.com)(:80)? [NC]
 RewriteRule ^(.*) http://www.cowcowhomes.com/$1 [R=301,L]
 Redirect permanent /sabouten http://www.cowcowhomes.com/en/pages/about.html
+
+RewriteCond %{HTTP:Accept-Encoding} gzip
+RewriteCond %{REQUEST_URI} \.(?:ico|html|js|css|xml|ttf|eot|ott|woff|svg)$
+RewriteCond %{REQUEST_FILENAME}.gz -s
+RewriteRule .* %{REQUEST_URI}.gz [L]
+
+<FilesMatch "\.ico\.gz$">
+  ForceType image/vnd.microsoft.icon
+  AddEncoding x-gzip .gz
+</FilesMatch>
+<FilesMatch "\.html\.gz$">
+  ForceType text/html
+  AddEncoding x-gzip .gz
+</FilesMatch>
+<FilesMatch "\.css\.gz$">
+  ForceType text/css
+  AddEncoding x-gzip .gz
+</FilesMatch>
+<FilesMatch "\.js\.gz$">
+  ForceType application/x-javascript
+  AddEncoding x-gzip .gz
+</FilesMatch>
+<FilesMatch "\.xml\.gz$">
+  ForceType text/xml
+  AddEncoding x-gzip .gz
+</FilesMatch>
+<FilesMatch "\.ttf\.gz$">
+  ForceType font/ttf
+  AddEncoding x-gzip .gz
+</FilesMatch>
+<FilesMatch "\.eot\.gz$">
+  ForceType application/vnd.ms-fontobject
+  AddEncoding x-gzip .gz
+</FilesMatch>
+<FilesMatch "\.ott\.gz$">
+  ForceType font/ott
+  AddEncoding x-gzip .gz
+</FilesMatch>
+<FilesMatch "\.woff\.gz$">
+  ForceType application/font-woff
+  AddEncoding x-gzip .gz
+</FilesMatch>
+<FilesMatch "\.svg\.gz$">
+  ForceType image/svg+xml
+  AddEncoding x-gzip .gz
+</FilesMatch>
