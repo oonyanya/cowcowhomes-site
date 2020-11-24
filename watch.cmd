@@ -1,7 +1,7 @@
 set PUB_DIRECTORY=C:\xampp\htdocs
 
-@call hexo clean
-@call hexo g
+call hexo clean
+call hexo gzip
 
 :remove all data in %PUB_DIRECTORY%
 pushd %PUB_DIRECTORY%
