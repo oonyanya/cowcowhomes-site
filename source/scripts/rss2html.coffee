@@ -139,26 +139,6 @@ class RssParser extends Parser
   getSummaryLink: (json)->
     return json['channel']['link']
 
-class MyNaviParser extends Parser
-  parseData: (data)->
-    return $($.parseHTML(data))
-
-  getItems: (html)->
-    return html.find(".info_room_area")
-
-  getLink: (items,i) ->
-    return $(items[i]).find(".room_list a")[2].href
-
-  getTitle: (items,i)->
-    name = $(items[i]).find(".ttl_buil_area a").text()
-    price = $(items[i]).find(".room_list .buil_price span")[0].innerText
-    locations = $(items[i]).find(".info_room_box dd")[1].innerHTML
-    first_location = locations.split("<br>")[0];
-    return name + "&nbsp;" + price + "&nbsp;" + first_location
-
-  getImage: (items,i)->
-    return $($(items[i]).find(".lazyload")[1]).attr("data-src")
-
 window.addEventListener 'DOMContentLoaded', (->
   rssboxs = document.getElementsByClassName('rss-box')
   i = 0
@@ -167,24 +147,12 @@ window.addEventListener 'DOMContentLoaded', (->
     do (i) ->
       rssbox = rssboxs[i]
       rss_url = rssbox.getAttribute('data-rss-url')
-      if rss_url.match(/chintai.mynavi.jp/)
-         $.ajax
-           type: 'GET'
-           url: '/rss/index.php?format=xml&rss_url=' + rss_url
-           dataType: 'html'
-           success: (json) ->
-             parser = new MyNaviParser
-             parser.addRssItem(json, rssbox)
-             return
-      else
-         $.ajax
-           type: 'GET'
-           url: '/rss/index.php?rss_url=' + rss_url
-           dataType: 'json'
-           success: (json) ->
-             parser = new RssParser
-             parser.addRssItem(json, rssbox)
-             return
+      fetch('/rss/index.php?rss_url=' + rss_url)
+      .then (response) -> response.json()      
+      .then (json)->
+        parser = new RssParser
+        parser.addRssItem(json, rssbox)
+        return
       return
     i++
   return
