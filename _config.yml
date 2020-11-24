@@ -27,6 +27,10 @@ highlight:
   enable: true
   line_number: false
 
+# デフォルトだと.htaccessはコピーされない
+include:
+  - .htaccess
+
 plugins:
   hexo-multilang:
     # languageと合わせること
