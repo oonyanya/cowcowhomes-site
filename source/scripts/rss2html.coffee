@@ -109,9 +109,11 @@ class RssParser extends Parser
     if typeof json['@attributes'] == 'undefined'
       rss_items = json['item']
     else
-      rss_items = json['channel']['item']
+      rss_items = json.channel?.item
+    if typeof rss_items == 'undefined'
+      rss_items = []
     #rss_itemが一つしか存在しない場合、配列で取得できない
-    if !Array.isArray(rss_items)
+    else if !Array.isArray(rss_items)
       rss_items = [ rss_items ]
     return rss_items
 
