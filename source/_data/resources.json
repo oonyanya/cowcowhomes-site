@@ -16,6 +16,10 @@
 			"prerelease_title":"プレリリース",
 			"prerelease_list":[
 				{
+					"date":"2021/03/05",
+					"text":"業態転換のサポートを始めました"
+				},
+				{
 					"date":"2019/03/01",
 					"text":"物件リストをブログ管理にしました(最短で一日ごとの更新になります)"
 				},
@@ -68,6 +72,10 @@
 		"index": {
 			"prerelease_title":"NEWS",
 			"prerelease_list":[
+				{
+					"date":"2021/03/05",
+					"text":"We start to support handout for resturant(make ad or website)"
+				},
 				{
 					"date":"2019/03/01",
 					"text":"We make apartment list in blog space(update in the shortest one day)"
