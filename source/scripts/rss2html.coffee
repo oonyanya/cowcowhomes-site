@@ -1,3 +1,5 @@
+SUMMARY_MAX_LEN = 70
+
 class ImageDelayLoader
   @observer = new IntersectionObserver (entries, object) ->
     for i in[0..entries.length - 1]
@@ -131,9 +133,9 @@ class RssParser extends Parser
 
   getDescription: (items,i)->
     if typeof(items[i]['atom_summary']) == 'undefined'
-      return items[i]['description'].substring(0,70) + "..."
+      return items[i]['description'].substring(0,SUMMARY_MAX_LEN) + "..."
     else
-      return items[i]['atom_summary'].substring(0,70) + "..."
+      return items[i]['atom_summary'].substring(0,SUMMARY_MAX_LEN) + "..."
 
   getSummaryTitle: (json)->
     return json['channel']['title']
