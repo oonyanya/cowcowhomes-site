@@ -1,6 +1,6 @@
 RewriteEngine on
 RewriteCond %{HTTPS} off
-RewriteRule ^(.*) https://www.cowcowhomes.com/$1 [R=301]
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
 RewriteCond %{HTTP_HOST} ^(cowcowhomes\.com)(:80)? [NC]
 RewriteRule ^(.*) https://www.cowcowhomes.com/$1 [R=301,L]
 Redirect permanent /sabouten http://www.cowcowhomes.com/en/about.html
