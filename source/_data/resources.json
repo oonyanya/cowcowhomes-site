@@ -44,9 +44,9 @@
 			},
 			{
 				"path":"/ja/handout.html",
-				"title":"補助金申請",
-				"thumbnail":"/image/business_man3_1_question.png",
-				"summary":"補助金申請の代行などを行っております"
+				"title":"許認可支援",
+				"thumbnail":"/image/soudan_madoguchi_foreigner.png",
+				"summary":"許認可関係の代行を行っております"
 			},
 			{
 				"path":"/ja/about.html",
@@ -101,9 +101,9 @@
 			},
 			{
 				"path":"/en/handout.html",
-				"title":"HANDOUT",
-				"thumbnail":"/image/business_man3_1_question.png",
-				"summary":"We can help handout"
+				"title":"SUPPORT LICENSE",
+				"thumbnail":"/image/soudan_madoguchi_foreigner.png",
+				"summary":"We can help that you get license etc"
 			},
 			{
 				"path":"/en/about.html",
