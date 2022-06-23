@@ -16,6 +16,10 @@
 			"prerelease_title":"プレリリース",
 			"prerelease_list":[
 				{
+					"date":"2022/06/23",
+					"text":"補助金関係のページを別のサイトに移動しました"
+				},
+				{
 					"date":"2021/03/05",
 					"text":"業態転換のサポートを始めました"
 				},
@@ -43,12 +47,6 @@
 				"summary":"当社が売主や仲介の物件を見ることができます"
 			},
 			{
-				"path":"/ja/handout.html",
-				"title":"許認可支援",
-				"thumbnail":"/image/soudan_madoguchi_foreigner.png",
-				"summary":"許認可関係の代行を行っております"
-			},
-			{
 				"path":"/ja/about.html",
 				"title":"会社案内",
 				"thumbnail":"/image/business_icon_big_company.png",
@@ -72,6 +70,10 @@
 		"index": {
 			"prerelease_title":"NEWS",
 			"prerelease_list":[
+				{
+					"date":"2022/06/23",
+					"text":"We make other page about handout or vise and move"
+				},
 				{
 					"date":"2021/03/05",
 					"text":"We start to support handout for resturant(make ad or website)"
@@ -98,12 +100,6 @@
 				"title":"SALE HOUSE",
 				"thumbnail":"/image/building_house3.png",
 				"summary":"Listing broking sale apartment or my company's own."
-			},
-			{
-				"path":"/en/handout.html",
-				"title":"SUPPORT LICENSE",
-				"thumbnail":"/image/soudan_madoguchi_foreigner.png",
-				"summary":"We can help that you get license etc"
 			},
 			{
 				"path":"/en/about.html",
