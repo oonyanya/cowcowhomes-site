@@ -31,35 +31,7 @@ highlight:
 include:
   - .htaccess
 
-plugins:
-  hexo-multilang:
-    # languageと合わせること
-    languages: [ja, en]  
+marked:
+  prependRoot: true
+  postAsset: true
 
-    pagination-dir: page
-
-    index-generator:
-      per-page: 5
-      order-by: -date
-      index-dir: 
-      default-lang: en
-
-    archive-generator:
-      per-page: 10
-      order-by: -date
-      archives-dir: archives
-      yearly: true
-      monthly: true
-      daily: false
-
-    category-generator:
-      per-page: 10
-      order-by: -date
-      categories-dir: categories
-      enable-index-page: true
-
-    tag-generator:
-      per-page: 5
-      order-by: -date
-      tags-dir: tags
-      enable-index-page: true

@@ -11,7 +11,7 @@ html(lang='ja')
 		script(src='//accaii.com/cowcowhomes/script.js' async='')
 		noscript
 			img(src='//accaii.com/cowcowhomes/script?guid=on')
-		- if(page.base == '')
+		- if(page.path ==  'index.html')
 			script(type='text/javascript'). 
 				(function(){
 					Object.defineProperty(document,"referrer",{value:document.referrer });

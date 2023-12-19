@@ -32,27 +32,7 @@
 					"text":"ホームページを制作しました"
 				}
 			]
-		},
-		"pages":[
-			{
-				"path":"/ja/rentals",
-				"title":"賃貸アパート",
-				"thumbnail":"/image/building_house2.png",
-				"summary":"当社が貸主の物件や仲介物件を見ることができます"
-			},
-			{
-				"path":"/ja/sales",
-				"title":"売買",
-				"thumbnail":"/image/building_house3.png",
-				"summary":"当社が売主や仲介の物件を見ることができます"
-			},
-			{
-				"path":"/ja/about.html",
-				"title":"会社案内",
-				"thumbnail":"/image/business_icon_big_company.png",
-				"summary":"会社の所在地や問い合わせ先を記載しています"
-			}
-		]
+		}
 	},
 	"en": {
 		"lang_name":"English",
@@ -87,26 +67,6 @@
 					"text":"We made home page"
 				}
 			]
-		},
-		"pages":[
-			{
-				"path":"/en/rentals",
-				"title":"RENTAL APARTMENT",
-				"thumbnail":"/image/building_house2.png",
-				"summary":"Listing broking rental apartment or my company's own."
-			},
-			{
-				"path":"/en/sales",
-				"title":"SALE HOUSE",
-				"thumbnail":"/image/building_house3.png",
-				"summary":"Listing broking sale apartment or my company's own."
-			},
-			{
-				"path":"/en/about.html",
-				"title":"ABOUT",
-				"thumbnail":"/image/business_icon_big_company.png",
-				"summary":"Describing location of company or telephone number and mail etc."
-			}
-		]
+		}
 	}
 }

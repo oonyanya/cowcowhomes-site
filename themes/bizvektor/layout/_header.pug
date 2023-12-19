@@ -15,4 +15,4 @@ nav.global_nav
       a(href='/') TOP
     each item in get_pages()
       li.dropdown-parent
-        a(href=`${item.path}`) #{item.title}
+        a(href=`/${item.path}`) #{item.title}
