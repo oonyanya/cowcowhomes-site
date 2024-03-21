@@ -2,6 +2,7 @@ set PUB_DIRECTORY=C:\xampp\htdocs
 
 call hexo clean
 call hexo gzip
+call node web_fetch.js
 
 :remove all data in %PUB_DIRECTORY%
 pushd %PUB_DIRECTORY%

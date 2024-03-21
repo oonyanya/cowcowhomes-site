@@ -143,6 +143,28 @@ class RssParser extends Parser
   getSummaryLink: (json)->
     return json['channel']['link']
 
+class CraiglistParser extends Parser
+  getItems: (json)->
+    return json
+
+  getLink: (items,i) ->
+    return items[i]['link']
+
+  getTitle: (items,i)->
+    return items[i]['title'] + " " + items[i]['price']
+
+  getImage: (items,i)->
+    return "";
+
+  getDescription: (items,i)->
+    return "";
+
+  getSummaryTitle: (json)->
+    return "";
+
+  getSummaryLink: (json)->
+    return "";
+
 window.addEventListener 'DOMContentLoaded', (->
   rssboxs = document.getElementsByClassName('rss-box')
   i = 0
@@ -151,13 +173,23 @@ window.addEventListener 'DOMContentLoaded', (->
     do (i) ->
       rssbox = rssboxs[i]
       rss_url = rssbox.getAttribute('data-rss-url')
-      fetch('/rss/index.php?rss_url=' + rss_url)
-      .then (response) -> response.json()      
-      .then (json)->
-        parser = new RssParser
-        parser.addRssItem(json, rssbox)
+      if(rss_url != null)
+        fetch('/rss/index.php?rss_url=' + rss_url)
+        .then (response) -> response.json()      
+        .then (json)->
+          parser = new RssParser
+          parser.addRssItem(json, rssbox)
+          return
         return
-      return
+      craiglist = rssbox.getAttribute('data-craiglist')
+      if(craiglist != null)
+        fetch('/' + craiglist)
+        .then (response) -> response.json()      
+        .then (json)->
+          parser = new CraiglistParser
+          parser.addRssItem(json, rssbox)
+          return
+        return
     i++
   return
 ), false
