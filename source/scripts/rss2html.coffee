@@ -154,7 +154,7 @@ class CraiglistParser extends Parser
     return items[i]['title'] + " " + items[i]['price']
 
   getImage: (items,i)->
-    return "";
+    return "/image/building_house2.png";
 
   getDescription: (items,i)->
     return "";
