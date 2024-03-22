@@ -36,6 +36,7 @@ async function crawl(url) {
         link: url,
         title: title,
         price: detail.find("div.price").text(),
+        location: detail.find("div.location").text(),
       });
 
       left--;
