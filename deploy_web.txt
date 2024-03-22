@@ -1,0 +1,21 @@
+#######################
+# WinSCP スクリプト
+#######################
+# option batch on
+# option confirm off
+
+# option exclude "adminscrivener.cowcowhomes.com/"
+
+# %FTP_SERVER_HOST%
+open "%1%"
+
+lcd "%2%"
+
+cd /
+
+# ローカルファイル
+synchronize remote
+
+close
+
+exit
