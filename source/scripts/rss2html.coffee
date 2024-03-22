@@ -140,7 +140,7 @@ class RssParser extends Parser
 
 class CraiglistParser extends Parser
   getItems: (json)->
-    return json
+    return json.items;
 
   getLink: (items,i) ->
     return items[i]['link']
@@ -158,7 +158,7 @@ class CraiglistParser extends Parser
     return "";
 
   getSummaryLink: (json)->
-    return "";
+    return json.summary.link;
 
 window.addEventListener 'DOMContentLoaded', (->
   rssboxs = document.getElementsByClassName('rss-box')

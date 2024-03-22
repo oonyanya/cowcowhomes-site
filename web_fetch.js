@@ -49,7 +49,7 @@ async function crawl(url) {
       e.title += page_document(".housing").text();
     }
 
-    return urlTitleList;
+    return {items:urlTitleList,summary:{link:url,title:""}};
 
   } catch (error) {
     // TODO:あまりよろしくないのでうまいこと分ける
