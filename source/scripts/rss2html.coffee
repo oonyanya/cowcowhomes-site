@@ -71,26 +71,21 @@ class Parser
     while i < len
       #複製してliタグを得る
       new_li = document.importNode(template.content, true).firstElementChild
+
       new_a = new_li.getElementsByTagName('a')[0]
       if typeof(new_a) != "undefined"
         new_a.setAttribute 'href', @getLink(rss_items,i)
         new_a.insertAdjacentHTML('afterbegin', @getTitle(rss_items,i))
+
       new_img = new_li.getElementsByTagName('img')[0]
       if typeof(new_img) != "undefined"
         new_img.setAttribute 'data-src',@getImage(rss_items,i)
         ImageDelayLoader.register(new_img)
+
       new_desc = new_li.getElementsByClassName('description')[0]
       if typeof(new_desc) != "undefined"
         new_desc.insertAdjacentHTML('afterbegin', @getDescription(rss_items,i))
-      random = @hashCode(@getTitle(rss_items,i))
-      detail = 
-        'content_type': 'product'
-        'items': [ {
-          'id': '' + random
-          'name': @getTitle(rss_items,i)
-        } ]
-      gtag_text = 'gtag(\'event\',\'select_content\', ' + JSON.stringify(detail) + ')'
-      new_a.setAttribute 'onclick', gtag_text
+
       root.appendChild new_li
       i++
     summary_tag = rssbox.getElementsByClassName('summary')
@@ -100,10 +95,10 @@ class Parser
         summary.setAttribute 'href', @getSummaryLink(json)
       if summary.innerHTML == ""
         summary.innerHTML = @getSummaryTitle(json)
-        gtag_text = 'gtag(\'event\',\'view_search_results\', ' + @getSummaryTitle(json) + ')'
-        summary.setAttribute 'onclick', gtag_text
+
     progress = rssbox.getElementsByTagName('progress')[0]
     progress.style.display = 'none'
+
     return
 
 class RssParser extends Parser
