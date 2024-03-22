@@ -2,11 +2,13 @@ const axios = require('axios');
 const cheerio = require('cheerio');
 const fs = require('fs');
 
-// Output File
-const output_file = ".\\public\\" + "rentals.json";
-
-// Site url to crawl
-const startUrl = "https://tokyo.craigslist.org/search/hhh?availabilityMode=0&cc=us&lang=en&query=99902%20-sale&sort=date#search=1~gallery~0~0";
+// 処理したいリスト。クレイグリストのみ対応
+const parse_list=[
+ {
+   output_file:".\\public\\rentals.json",
+   start_url: "https://tokyo.craigslist.org/search/hhh?availabilityMode=0&cc=us&lang=en&query=99902%20-sale&sort=date#search=1~gallery~0~0"
+ }
+];
 
 // 内容を取得する上限
 const limit = 10;
@@ -59,13 +61,15 @@ async function crawl(url) {
 }
 
 (async () => {
-  console.log("fetch start:" + startUrl);
-  let result = await crawl(startUrl);
-  console.log("fetch success");
-  fs.writeFile(output_file, JSON.stringify(result),(err)=>{
-   if(err)
-     console.log("write file failed:" + err);
-   else
-     console.log("saved to " + output_file);
-  });
+  for(let item of parse_list){
+    console.log("fetch start:" + item.start_url);
+    let result = await crawl(item.start_url);
+    console.log("fetch success");
+    fs.writeFile(item.output_file, JSON.stringify(result),(err)=>{
+     if(err)
+       console.log("write file failed:" + err);
+     else
+       console.log("saved to " + item.output_file);
+    });
+  }
 })();
