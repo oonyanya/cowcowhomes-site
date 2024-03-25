@@ -11,7 +11,7 @@ const parse_list=[
 ];
 
 // 内容を取得する上限
-const limit = 10;
+const limit = 20;
 
 async function crawl(url) {
   try {

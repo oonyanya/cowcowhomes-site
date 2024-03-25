@@ -1,4 +1,5 @@
 SUMMARY_MAX_LEN = 70
+ITEM_MAX_LEN = 20
 
 class ImageDelayLoader
   @observer = new IntersectionObserver (entries, object) ->
@@ -61,8 +62,8 @@ class Parser
     rss_items = @getItems(json)
 
     len = rss_items.length
-    if len > 10
-      len = 10
+    if len > ITEM_MAX_LEN
+      len = ITEM_MAX_LEN
 
     root = rssbox.getElementsByClassName('rss-items')[0]
     template = root.getElementsByTagName('template')[0]
