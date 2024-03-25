@@ -153,7 +153,7 @@ class CraiglistParser extends Parser
     return "/image/building_house2.png";
 
   getDescription: (items,i)->
-    return "";
+    return items[i]['summary'] + "...";
 
   getSummaryTitle: (json)->
     return "";

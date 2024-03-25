@@ -13,6 +13,9 @@ const parse_list=[
 // 内容を取得する上限
 const limit = 20;
 
+// サマリーとして表示する文字数の上限
+const summary_limit = "100";
+
 async function crawl(url) {
   try {
     const headers = {
@@ -50,6 +53,7 @@ async function crawl(url) {
         title: title,
         price: detail.find("div.price").text(),
         location: detail.find("div.location").text(),
+        summary: null
       });
 
       left--;
@@ -63,6 +67,12 @@ async function crawl(url) {
       let response = await axios.get(e.link);
       let page_document = cheerio.load(response.data);
       e.title += page_document(".housing").text();
+      let summary = "";
+      page_document("#postingbody").contents().each((i,e)=>{
+        if(e.type == "text")
+          summary += e.data.trim() + " ";  // 元のデーターには改行と余計な空白があるのでこれらを除去する
+      });      
+      e.summary = summary.slice(0,summary_limit);
     }
 
     return {items:urlTitleList,summary:{link:url,title:""}};
