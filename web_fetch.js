@@ -2,10 +2,14 @@ const axios = require('axios');
 const cheerio = require('cheerio');
 const fs = require('fs');
 
+// 出力先のルートフォルダー
+const output_root_folder = ".\\public\\";
+
 // 処理したいリスト。クレイグリストのみ対応
 const parse_list=[
  {
-   output_file:".\\public\\rentals.json",
+   output_image_folder: "image\\rentals\\",
+   output_file: "rentals.json",
    start_url: "https://tokyo.craigslist.org/search/hhh?availabilityMode=0&cc=us&lang=en&query=99902%20-sale&sort=date#search=1~gallery~0~0"
  }
 ];
@@ -16,7 +20,19 @@ const limit = 20;
 // サマリーとして表示する文字数の上限
 const summary_limit = "100";
 
-async function crawl(url) {
+async function download_async(uri, filename ,headers){
+  try{
+    const response = await axios.get(uri,{responseType: 'arraybuffer', ...headers});
+    new Promise((resloved,reject)=>{
+      fs.writeFile(filename, new Buffer.from(response.data), "binary", resloved);
+    });
+  }catch(error){
+    console.log(uri + "is failed." + error);
+  }
+};
+
+
+async function crawl(item) {
   try {
     const headers = {
       'Cache-Control':'no-cache',
@@ -31,7 +47,7 @@ async function crawl(url) {
       'Sec-Fetch-Site':'cross-site',
       'Sec-Fetch-User':'?1'
     }
-    const response = await axios.get(url,{headers});
+    const response = await axios.get(item.start_url,{headers});
     const $ = cheerio.load(response.data);
     let urlTitleList = [];
 
@@ -60,6 +76,7 @@ async function crawl(url) {
     });
 
     // await foreachをするのがとてつもなく面倒なので、２回に分ける
+    let image_number = 0;
     for(let e of urlTitleList)
     {
       // TODO:あまりよろしくないのでうまいこと分ける
@@ -73,13 +90,23 @@ async function crawl(url) {
           summary += e.data.trim() + " ";  // 元のデーターには改行と余計な空白があるのでこれらを除去する
       });      
       e.summary = summary.slice(0,summary_limit);
+
+      //　画像をマナー上ローカルに保存しなければならない
+      let image_uri = page_document(".gallery img").attr("src");
+      let image_local_uri = item.output_image_folder + image_number + ".jpg";
+      await download_async(image_uri, output_root_folder + image_local_uri);
+      e.image_url = image_local_uri.replaceAll("\\","/");
+      // TODO:あまりよろしくないのでうまいこと分ける
+      console.log(image_uri + " fetched and saved to " + output_root_folder + image_local_uri);
+
+      image_number++;
     }
 
-    return {items:urlTitleList,summary:{link:url,title:""}};
+    return {items:urlTitleList,summary:{link:item.start_url,title:""}};
 
   } catch (error) {
     // TODO:あまりよろしくないのでうまいこと分ける
-    console.log(`Error crawling ${url}:`, error.message);
+    console.log(`Error crawling ${item.start_url}:`, error.message);
     return null;
   }
 }
@@ -87,13 +114,13 @@ async function crawl(url) {
 (async () => {
   for(let item of parse_list){
     console.log("fetch start:" + item.start_url);
-    let result = await crawl(item.start_url);
+    let result = await crawl(item);
     console.log("fetch success");
-    fs.writeFile(item.output_file, JSON.stringify(result),(err)=>{
+    fs.writeFile(output_root_folder + item.output_file, JSON.stringify(result),(err)=>{
      if(err)
        console.log("write file failed:" + err);
      else
-       console.log("saved to " + item.output_file);
+       console.log("saved to " + output_root_folder + item.output_file);
     });
   }
 })();

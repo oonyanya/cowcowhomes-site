@@ -27,9 +27,10 @@ highlight:
   enable: true
   line_number: false
 
-# デフォルトだと.htaccessはコピーされない
+# デフォルトだといくつかのファイルがコピーされない
 include:
   - .htaccess
+  - "image/**/*"
 
 marked:
   prependRoot: true

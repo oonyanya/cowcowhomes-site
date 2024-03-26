@@ -150,7 +150,10 @@ class CraiglistParser extends Parser
     return items[i]['title'] + " " + items[i]['price'] + " - " + items[i]['location'];
 
   getImage: (items,i)->
-    return "/image/building_house2.png";
+    if typeof(items[i]['image_url']) == "undefined"
+      return "/image/rentals/_default.png"
+    else
+      return "/" + items[i]['image_url']
 
   getDescription: (items,i)->
     return items[i]['summary'] + "...";
