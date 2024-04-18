@@ -15,7 +15,7 @@ const parse_list=[
  {
    output_image_folder: "image\\sales\\",
    output_file: "sales.json",
-   start_url: "https://tokyo.craigslist.org/search/hhh?availabilityMode=0&cc=us&lang=en&query=99902%20sale&sort=date#search=1~gallery~0~0"
+   start_url: "https://tokyo.craigslist.org/search/hhh?availabilityMode=0&cc=us&lang=en&query=99902+sale&sort=date#search=1~gallery~0~0"
  }
 ];
 
