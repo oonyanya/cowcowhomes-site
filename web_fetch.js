@@ -88,6 +88,8 @@ async function crawl(item) {
       console.log("fetching... " + e.link);
       let response = await axios.get(e.link);
       let page_document = cheerio.load(response.data);
+
+      // 取得したHTMLから必要なものを取り出す
       e.title += page_document(".housing").text();
       let summary = "";
       page_document("#postingbody").contents().each((i,e)=>{
