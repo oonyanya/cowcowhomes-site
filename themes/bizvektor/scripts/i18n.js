@@ -2,11 +2,10 @@
 
 const _ = require('lodash');
 const util = require('hexo-util');
-const postGenerator = require('hexo/lib/plugins/generator/post');
+const postGenerator = require('hexo/dist/plugins/generator/post');
 const archiveGenerator = require('hexo-generator-archive/lib/generator');
 const categoryGenerator = require('hexo-generator-category/lib/generator');
 const tagGenerator = require('hexo-generator-tag/lib/generator');
-const { magenta } = require('chalk');
 const tildify = require('tildify');
 const {
     pathJoin,
@@ -49,13 +48,13 @@ hexo.post.create = async (data, replace) => {
       results.push(res);
       hexo.log.info(
         'Posts created in: %s',
-        magenta(tildify(res.path))
+        tildify(res.path)
       );
     }
   }
 
   for (let i in results) {
-    if (i != 0) hexo.log.info('Created: %s', magenta(tildify(results[i].path)));
+    if (i != 0) hexo.log.info('Created: %s', tildify(results[i].path));
   }
 
   return results[0];
