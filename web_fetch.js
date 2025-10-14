@@ -10,7 +10,12 @@ const parse_list=[
  {
    output_image_folder: "image\\rentals\\",
    output_file: "rentals.json",
-   start_url: "https://tokyo.craigslist.org/search/hhh?availabilityMode=0&cc=us&lang=en&query=99902%20-sale&sort=date#search=1~gallery~0~0"
+   start_url: "https://tokyo.craigslist.org/search/apa?availabilityMode=0&cc=us&lang=en&query=99902%20-sale&sort=date#search=1~gallery~0~0"
+ },
+ {
+   output_image_folder: "image\\shop_rentals\\",
+   output_file: "shop_rentals.json",
+   start_url: "https://tokyo.craigslist.org/search/off?availabilityMode=0&cc=us&lang=en&query=99902%20-sale&sort=date#search=1~gallery~0~0"
  },
  {
    output_image_folder: "image\\sales\\",
